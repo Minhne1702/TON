@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Trang Chủ Xây Dựng &amp; Cơ Khí | Chuyên Nghiệp &amp; Bền Vững</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6d6f74",
+                        "background-light": "#f7f7f7",
+                        "background-dark": "#191919",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass-nav {
+            background: rgba(25, 25, 25, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(109, 111, 116, 0.2);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white">
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg">
+                    <span class="material-symbols-outlined text-white text-2xl">architecture</span>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-white uppercase leading-none">
+                        XD &amp; Cơ Khí
+                    </h1>
+                    <p class="text-[10px] text-primary font-medium tracking-widest uppercase mt-1">
+                        Industrial Solutions
+                    </p>
+                </div>
+            </div>
+
+            <!-- Menu -->
+            <div class="hidden md:flex items-center gap-10">
+                <a href="Index.html" class="nav-link">Trang chủ</a>
+                <a href="Services.html" class="nav-link">Dịch vụ</a>
+                <a href="CEO.html" class="nav-link">CEO</a>
+                <a href="Contact.html" class="nav-link">Liên hệ</a>
+            </div>
+
+            <!-- CTA -->
+            <div class="flex items-center gap-4">
+                <button
+                    class="bg-primary hover:bg-primary/80 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-2">
+                    Báo giá ngay
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20">
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <div class="w-full h-full bg-cover bg-fixed bg-center"
+                data-alt="Industrial construction site with professional workers and machinery"
+                style="background-image: linear-gradient(to right, rgba(25,25,25,0.95) 30%, rgba(25,25,25,0.2) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuCTwI5sqS50vsrhBmR2qxSE-6WMOLPLtF9UdZDE-8XmBv5_XKaL6MmoXq8ZUSb7k1q2vqMWwqClQj28nRO9EzW6JPt5RMcX14DNwiSQLG4Mrxc1K1U0fHGBqxYedTRUCMbNeEZ3Dp5EJXYsg56SlZJdGKhuHNGPfApege6oxsvS_38Ju-0g2mU-I8BXI6hIhpJg5NB6z9UJcnokTA-AC4wflKsdI1vLx2svz_0INo0Ii-8Eu0egV-PBOTuQ8it6m_hD7bL2v8Gcr6Y');">
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10 grid lg:grid-cols-2 gap-12">
+            <div class="flex flex-col justify-center gap-8">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary w-fit">
+                    <span class="material-symbols-outlined text-sm">verified</span>
+                    <span class="text-[12px] font-bold uppercase tracking-wider">Top Rated Contractor 2024</span>
+                </div>
+                <h2 class="text-5xl lg:text-7xl font-bold leading-tight text-white tracking-tighter">
+                    Giải Pháp <span class="text-primary italic">Xây Dựng</span> &amp; Cơ Khí Chuyên Nghiệp
+                </h2>
+                <p class="text-lg text-slate-300 max-w-xl font-light leading-relaxed">
+                    Chuyên gia chống thấm mái tôn, cơ khí sắt tổng hợp và gia công inox chất lượng cao với độ bền vượt
+                    trội, đáp ứng mọi tiêu chuẩn kỹ thuật khắt khe.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button
+                        class="px-8 py-4 bg-primary text-white font-bold rounded-lg hover:bg-primary/80 transition-all flex items-center gap-3">
+                        Khám phá dịch vụ <span class="material-symbols-outlined">explore</span>
+                    </button>
+                    <button
+                        class="px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-bold rounded-lg transition-all flex items-center gap-3 backdrop-blur-sm">
+                        Liên hệ tư vấn <span class="material-symbols-outlined">call</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Stats Section -->
+    <section class="py-12 bg-background-dark border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="flex flex-col gap-1 border-l-2 border-primary pl-6">
+                    <span class="text-4xl font-bold text-white tracking-tight">15+</span>
+                    <span class="text-slate-400 text-sm font-medium uppercase tracking-widest">Năm kinh nghiệm</span>
+                </div>
+                <div class="flex flex-col gap-1 border-l-2 border-primary pl-6">
+                    <span class="text-4xl font-bold text-white tracking-tight">500+</span>
+                    <span class="text-slate-400 text-sm font-medium uppercase tracking-widest">Dự án hoàn thành</span>
+                </div>
+                <div class="flex flex-col gap-1 border-l-2 border-primary pl-6">
+                    <span class="text-4xl font-bold text-white tracking-tight">100%</span>
+                    <span class="text-slate-400 text-sm font-medium uppercase tracking-widest">Khách hàng hài
+                        lòng</span>
+                </div>
+                <div class="flex flex-col gap-1 border-l-2 border-primary pl-6">
+                    <span class="text-4xl font-bold text-white tracking-tight">24/7</span>
+                    <span class="text-slate-400 text-sm font-medium uppercase tracking-widest">Hỗ trợ kỹ thuật</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Feature Section -->
+    <section class="py-24 bg-background-light dark:bg-[#121212]" id="services">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
+                <div class="max-w-2xl">
+                    <h3 class="text-primary font-bold uppercase tracking-[0.2em] text-sm mb-4 flex items-center gap-2">
+                        <span class="w-8 h-[2px] bg-primary"></span> Năng Lực Cốt Lõi
+                    </h3>
+                    <h2 class="text-4xl lg:text-5xl font-bold text-white tracking-tight">
+                        Dịch vụ trọng tâm của chúng tôi
+                    </h2>
+                </div>
+                <p class="text-slate-400 max-w-sm mb-2">
+                    Chúng tôi cung cấp các giải pháp kỹ thuật toàn diện với độ chính xác cao và quy trình thi công
+                    nghiêm ngặt.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1: Chống thấm -->
+                <div
+                    class="group relative bg-background-dark border border-white/5 rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-500">
+                    <div class="h-64 overflow-hidden">
+                        <div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
+                            data-alt="Specialized roof waterproofing treatment on industrial facility"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC5oP-dlSCdM-ZUIX5D_mkIn5T6yFqYetkt3_Rp4RvsiCfkzM7Hv8Uoc6jPduf8oVNCYoY2KElpVyOwOqj8TQhFZ4TBwp96xcQ6psyXkGPkKpO-TJ1NWO7fxVyueFhooWKTQQaeNk-a8URSJlDWs1cNmO6afl9493s3ZoCyljfIOrGaAjDEhRbsgRK0iD615Kdq82r6mPA_x_aZaYLJsAKd6DbbtWV3QL6bRSf9uUIFXM8Iha-vzxDwLaR4jHY1ZntLBT2A037AkFo');">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div
+                            class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                            <span
+                                class="material-symbols-outlined text-primary group-hover:text-white">water_drop</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-4">Chống thấm mái tôn</h4>
+                        <p class="text-slate-400 leading-relaxed mb-6">Xử lý triệt để hiện tượng thấm dột bằng công nghệ
+                            màng phủ đa lớp, bảo vệ công trình bền bỉ dưới mọi thời tiết khắc nghiệt.</p>
+                        <a class="text-primary font-bold inline-flex items-center gap-2 hover:gap-4 transition-all"
+                            href="#">
+                            Xem chi tiết <span class="material-symbols-outlined">trending_flat</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Service 2: Cơ khí sắt -->
+                <div
+                    class="group relative bg-background-dark border border-white/5 rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-500">
+                    <div class="h-64 overflow-hidden">
+                        <div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
+                            data-alt="Heavy steel structural welding and fabrication process"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDoL4xmEtCCLsIWNTR3I0TuheWow8S_ZTCHE3UpNOQe49BVHa6jGn3UEqplLlKAGWNtLS-7g8KF7odq8WEq8AGN6SycycGc6AtDQXcpcWgyPL7K4ziA1cy7vytultx7X0BZg7VNSO8j1y2hYraBvJ7TnTuzg5iXdpnA09vCSk4axwjrfsliOzoJK2n_7Mxhfye9JisUc9tUQKBWO3nypY2AkDYVj1m9n2QKl5H8-XaSs20r50ung5uVUDd2YIe3V4xjhvps11L1wzE');">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div
+                            class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                            <span
+                                class="material-symbols-outlined text-primary group-hover:text-white">precision_manufacturing</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-4">Cơ khí sắt tổng hợp</h4>
+                        <p class="text-slate-400 leading-relaxed mb-6">Thi công kết cấu nhà xưởng, hệ thống khung kèo,
+                            cửa cổng và hàng rào sắt mỹ thuật với độ hoàn thiện cao nhất.</p>
+                        <a class="text-primary font-bold inline-flex items-center gap-2 hover:gap-4 transition-all"
+                            href="#">
+                            Xem chi tiết <span class="material-symbols-outlined">trending_flat</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Service 3: Gia công Inox -->
+                <div
+                    class="group relative bg-background-dark border border-white/5 rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-500">
+                    <div class="h-64 overflow-hidden">
+                        <div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
+                            data-alt="High quality polished stainless steel fabrication work"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7kdAHziepdwWLAiIItr6p6ZdGindQEG8ue4G8vAhKzhPHuTGCVEAHsqU7CI5n7ZGLRwzs0Qbsn7Z80aJHFPRCXKnEMt7U94M402yYCS5_LSoaiZlsz3hiJ2ZzXn0zX2gvTyjRey3Vf8UpCq-uxkrESEuohko9xIen5Gq8-aVXnbqmauHyWjHuOPvlOjQElAjl4UuPoZYKGEg3TxQBpXJoJHF1nNmNhUalNJAddVCTjYX-u2YzUak6gI6x0UHWx7QwXqWFheuqx2w');">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div
+                            class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                            <span class="material-symbols-outlined text-primary group-hover:text-white">biotech</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-4">Gia công Inox</h4>
+                        <p class="text-slate-400 leading-relaxed mb-6">Sản xuất và lắp đặt các thiết bị inox 304/316 cao
+                            cấp cho y tế, thực phẩm, đảm bảo thẩm mỹ và kháng hóa chất tuyệt đối.</p>
+                        <a class="text-primary font-bold inline-flex items-center gap-2 hover:gap-4 transition-all"
+                            href="#">
+                            Xem chi tiết <span class="material-symbols-outlined">trending_flat</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why Choose Us -->
+    <section class="py-24 bg-background-dark overflow-hidden" id="about">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-20 items-center">
+            <div class="relative">
+                <div class="aspect-square bg-primary/10 rounded-2xl absolute -top-8 -left-8 w-64 h-64 -z-10"></div>
+                <div class="aspect-[4/5] bg-cover bg-center rounded-2xl shadow-2xl relative z-10"
+                    data-alt="Close up of engineer checking technical blueprints in factory"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA1a_104RrhIOzljTx28ZUEc1OjcE249_BKCCZsHHNheBjCDInn1WNk4MtWvdVx24AyruCDYql8L8of5N3Yf3g5ecI4ZcCpgc1qPcmo5pTsqTCi5OHVJWsOKxxFuiEgykdarYd0Oo0rtPe8imUtbAOS8v0GAALOQArS_G4TNN4C13GDX4QLhnuDFduhtGam3Hn8xJS6JwdP_hiLwLRf-DNQLG9TTuR-vJIi9xhe-TlL7Q3NWIpXWR67zKRjElgjNQyuHOl7rM7pnXg');">
+                    <div class="absolute bottom-6 left-6 right-6 p-6 glass-nav rounded-xl border border-white/10">
+                        <p class="text-white font-medium italic">"Chất lượng không chỉ là mục tiêu, đó là quy trình làm
+                            việc mỗi ngày của chúng tôi."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-8">
+                <div>
+                    <h3 class="text-primary font-bold uppercase tracking-[0.2em] text-sm mb-4">Lợi thế cạnh tranh</h3>
+                    <h2 class="text-4xl font-bold text-white tracking-tight mb-6">Tại sao đối tác tin chọn chúng tôi?
+                    </h2>
+                </div>
+                <div class="grid gap-6">
+                    <div class="flex gap-6 group">
+                        <div
+                            class="shrink-0 w-14 h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center group-hover:border-primary transition-colors">
+                            <span class="material-symbols-outlined text-primary">timer</span>
+                        </div>
+                        <div>
+                            <h5 class="text-lg font-bold text-white mb-2">Đảm bảo tiến độ</h5>
+                            <p class="text-slate-400 leading-relaxed">Cam kết hoàn thành dự án đúng thời hạn với kế
+                                hoạch thi công chi tiết theo từng giai đoạn.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 group">
+                        <div
+                            class="shrink-0 w-14 h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center group-hover:border-primary transition-colors">
+                            <span class="material-symbols-outlined text-primary">gavel</span>
+                        </div>
+                        <div>
+                            <h5 class="text-lg font-bold text-white mb-2">Vật liệu chính hãng</h5>
+                            <p class="text-slate-400 leading-relaxed">Sử dụng 100% nguyên vật liệu từ các thương hiệu uy
+                                tín, có đầy đủ chứng chỉ chất lượng (CO/CQ).</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 group">
+                        <div
+                            class="shrink-0 w-14 h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center group-hover:border-primary transition-colors">
+                            <span class="material-symbols-outlined text-primary">verified_user</span>
+                        </div>
+                        <div>
+                            <h5 class="text-lg font-bold text-white mb-2">Bảo hành dài hạn</h5>
+                            <p class="text-slate-400 leading-relaxed">Chế độ hậu mãi và bảo hành công trình lên đến 10
+                                năm, hỗ trợ khắc phục sự cố trong 24h.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Final CTA Section -->
+    <section class="py-24 px-6 lg:px-10">
+        <div class="max-w-7xl mx-auto relative rounded-3xl overflow-hidden bg-primary/10 border border-primary/20">
+            <div class="absolute inset-0 z-0 opacity-20 pointer-events-none"
+                style="background-image: radial-gradient(circle at 2px 2px, #6d6f74 1px, transparent 0); background-size: 32px 32px;">
+            </div>
+            <div class="relative z-10 py-20 px-10 text-center flex flex-col items-center gap-8">
+                <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight max-w-3xl">Sẵn sàng để bắt đầu dự án
+                    tiếp theo của bạn?</h2>
+                <p class="text-slate-400 text-lg max-w-xl">
+                    Hãy để chuyên gia của chúng tôi tư vấn giải pháp kỹ thuật tối ưu và tiết kiệm chi phí nhất cho công
+                    trình của bạn.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button
+                        class="px-10 py-5 bg-primary text-white font-black rounded-xl hover:scale-105 transition-transform text-lg shadow-xl shadow-primary/20">
+                        YÊU CẦU BÁO GIÁ
+                    </button>
+                    <button
+                        class="px-10 py-5 bg-transparent border border-white/20 text-white font-black rounded-xl hover:bg-white/5 transition-all text-lg">
+                        XEM CATALOGUE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-background-dark border-t border-white/5 pt-20 pb-10 px-6 lg:px-10" id="contact">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+            <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-primary flex items-center justify-center rounded-lg">
+                        <span class="material-symbols-outlined text-white text-lg">architecture</span>
+                    </div>
+                    <h2 class="text-lg font-bold tracking-tight text-white uppercase leading-none">XD &amp; Cơ Khí</h2>
+                </div>
+                <p class="text-slate-400 leading-relaxed">Đơn vị thi công xây dựng và cơ khí hàng đầu, kiến tạo những
+                    công trình bền vững với thời gian.</p>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all text-white"
+                        href="#">
+                        <span class="material-symbols-outlined">social_leaderboard</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all text-white"
+                        href="#">
+                        <span class="material-symbols-outlined">language</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6">Dịch vụ</h4>
+                <ul class="flex flex-col gap-4 text-slate-400">
+                    <li><a class="hover:text-primary transition-colors" href="#">Chống thấm mái tôn</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Kết cấu nhà xưởng</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Cửa cổng sắt mỹ thuật</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Thiết bị Inox công nghiệp</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6">Công ty</h4>
+                <ul class="flex flex-col gap-4 text-slate-400">
+                    <li><a class="hover:text-primary transition-colors" href="#">Về chúng tôi</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Tin tức &amp; Sự kiện</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Tuyển dụng</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6">Liên hệ</h4>
+                <div class="flex flex-col gap-4 text-slate-400">
+                    <div class="flex gap-3">
+                        <span class="material-symbols-outlined text-primary">location_on</span>
+                        <span>336 Nguyễn Hiến Lê, Hoà Xuân, Cẩm Lệ, Đà Nẵng, Việt Nam</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="material-symbols-outlined text-primary">mail</span>
+                        <span>tuantrana2102@gmail.com</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="material-symbols-outlined text-primary">call</span>
+                        <span>0911 300 304</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-slate-500 text-sm">© 2026 XD &amp; Cơ Khí. All rights reserved.</p>
+            <div class="flex gap-8 text-sm text-slate-500">
+                <a class="hover:text-white transition-colors" href="#">Điều khoản</a>
+                <a class="hover:text-white transition-colors" href="#">Chính sách bảo mật</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

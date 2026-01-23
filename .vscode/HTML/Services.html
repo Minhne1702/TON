@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Danh Mục Dịch Vụ Kỹ Thuật</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6d6f74",
+                        "background-light": "#f7f7f7",
+                        "background-dark": "#141415",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass-nav {
+            background: rgba(25, 25, 25, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(109, 111, 116, 0.2);
+        }
+
+        .service-card-hover:hover .card-overlay {
+            background-color: rgba(109, 111, 116, 0.4);
+        }
+
+        .service-card-hover:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-white font-display overflow-x-hidden">
+    <div class="relative flex min-h-screen flex-col">
+        <nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <a href="Index.html" class="flex items-center gap-3 group">
+                        <div
+                            class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg group-hover:bg-white transition-colors">
+                            <span
+                                class="material-symbols-outlined text-white text-2xl group-hover:text-primary transition-colors">architecture</span>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold tracking-tight text-white uppercase leading-none">XD & Cơ Khí
+                            </h1>
+                            <p class="text-[10px] text-primary font-medium tracking-widest uppercase mt-1">Industrial
+                                Solutions</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="hidden md:flex items-center gap-10">
+                    <a href="Index.html"
+                        class="text-sm font-medium text-white hover:text-primary transition-colors">Trang chủ</a>
+                    <a href="Services.html" class="text-sm font-bold text-primary transition-colors">Dịch vụ</a>
+                    <a href="CEO.html"
+                        class="text-sm font-medium text-white hover:text-primary transition-colors">CEO</a>
+                    <a href="Contact.html"
+                        class="text-sm font-medium text-white hover:text-primary transition-colors">Liên hệ</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <button
+                        class="bg-primary hover:bg-primary/80 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-2">
+                        Báo giá ngay <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="flex-1 pt-24">
+            <section class="relative px-4 py-12 md:px-20 lg:px-40">
+                <div class="mx-auto max-w-[1200px]">
+                    <div class="relative overflow-hidden rounded-xl bg-neutral-900 aspect-[21/9] md:aspect-[25/8]">
+                        <div class="absolute inset-0 bg-cover bg-center"
+                            data-alt="Modern construction site with steel structures and engineering equipment"
+                            style="background-image: linear-gradient(to right, rgba(20, 20, 21, 0.95), rgba(20, 20, 21, 0.4)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0p2l55QrCUxB7J-VLcxlP2D60gbUJcvq1NQGpt2YSYA_p4Dg7dV0cwLe5tYNL_tZnJlTiC-JnSogF8qh_B_87mVwTV9XZrHsc7_oMommhfuwecPt6v2pis2LWwrwRZb7k9pc6aDDJ7IcpZAFw-SUQgVuaev-6wI8yh2OGSlATKl6xsjqThAvqrS4dS3wPK2dEVsCYu5zcR0rvp8drU6ioN0KhUfZDZKvKHUMDIqXFcpkOQ_UTdlS1Ev33vXG47KNOXtj4iuwPh9I');">
+                        </div>
+                        <div class="relative flex h-full flex-col justify-center px-8 md:px-16 gap-4">
+                            <span
+                                class="inline-block w-fit rounded bg-primary/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-primary border border-primary/30">Chuyên
+                                nghiệp - Bền vững</span>
+                            <h1
+                                class="max-w-2xl text-4xl font-black leading-tight tracking-tighter text-white md:text-5xl lg:text-6xl">
+                                Danh Mục Dịch Vụ <br /><span class="text-primary">Kỹ Thuật Cao</span>
+                            </h1>
+                            <p class="max-w-lg text-base text-neutral-400">
+                                Giải pháp xây dựng và gia công cơ khí chính xác. Chúng tôi cam kết chất lượng vượt trội
+                                trên từng mối hàn và lớp chống thấm.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="px-4 py-8 md:px-20 lg:px-40">
+                <div class="mx-auto max-w-[1200px]">
+                    <div class="flex items-end justify-between border-b border-white/10 pb-4 mb-8">
+                        <div>
+                            <h2 class="text-2xl font-bold text-white">Dịch Vụ Trọng Tâm</h2>
+                            <p class="text-sm text-neutral-500">Thế mạnh hàng đầu của chúng tôi trong ngành kỹ thuật</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="h-1 w-12 bg-primary rounded-full"></div>
+                            <div class="h-1 w-4 bg-white/20 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div
+                            class="group relative overflow-hidden rounded-xl bg-neutral-800 service-card-hover transition-all duration-500 border border-white/5 hover:border-primary/50">
+                            <div class="aspect-video overflow-hidden">
+                                <img alt="Waterproofing service for metal roofs"
+                                    class="h-full w-full object-cover transition-transform duration-700"
+                                    data-alt="Professional waterproofing application on a large corrugated metal industrial roof"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuArsFuFXi2WibRszFFf6L7ByWiLC7HtC2DZLEDxBkg6ZoCeDWnBu8YKtYw5OjCKuJ5rf8dDV0fKFW86fiBJ6PdLBJ8sUne1P-mnlzm25CjKVe6uuY1itRfD7fPiTuFovsAQ3mfFo-7uyunp8qthbatjM0-DyZ1khVvkgjlUyHNzs0wwjmF1SBUBn7gZ295pZfQjtKarPtntLPf80qLRY5mGl-xsf7NIqanNui5uEb8gBKXQ8wYVd7BKpEinkONen_Bw2NytZcv_LcQ" />
+                            </div>
+                            <div
+                                class="card-overlay absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent transition-colors duration-300">
+                            </div>
+                            <div class="absolute bottom-0 left-0 p-6 w-full">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="material-symbols-outlined text-primary scale-125">water_drop</span>
+                                    <h3 class="text-2xl font-bold text-white">Chống thấm nhà bằng tôn</h3>
+                                </div>
+                                <p
+                                    class="text-sm text-neutral-300 line-clamp-2 max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    Sử dụng công nghệ màng khò và sơn epoxy chuyên dụng giúp bảo vệ mái tôn khỏi rỉ sét
+                                    và dột nát tuyệt đối, bảo hành lên đến 10 năm.
+                                </p>
+                                <button
+                                    class="mt-4 flex items-center gap-2 text-sm font-bold text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                                    Xem chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </button>
+                            </div>
+                            <div
+                                class="absolute top-4 right-4 bg-primary px-3 py-1 rounded text-[10px] font-black uppercase tracking-widest shadow-xl">
+                                Dịch vụ TOP 1</div>
+                        </div>
+                        <div
+                            class="group relative overflow-hidden rounded-xl bg-neutral-800 service-card-hover transition-all duration-500 border border-white/5 hover:border-primary/50">
+                            <div class="aspect-video overflow-hidden">
+                                <img alt="Stainless steel mechanical fabrication"
+                                    class="h-full w-full object-cover transition-transform duration-700"
+                                    data-alt="Technical worker performing high-precision welding on a stainless steel structure"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs9wu82szP3yuWvxtgmC3jl5K1QwqVJE2lBFZ4qF2gDeMMj7alNdqKZ4vRo8IvtrheyA97JNiCwGBCHqmjuMkRxpvL3owx1he9o9c-6NdzMzAaa4VcdV5QkAcA63UAe708gFR6UaAlatuoJxRGjKtlyjdRjWRqgeQonkgdU-NZO_acU8qplFfesDX4cmjlg34uxo2zM1B1MeqeNVzP3p1mfhKyH2CNduo8_uYaHYFi-JsX3jYTyYC7OZjvxvUmnxlPtYdf96kPc0U" />
+                            </div>
+                            <div
+                                class="card-overlay absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent transition-colors duration-300">
+                            </div>
+                            <div class="absolute bottom-0 left-0 p-6 w-full">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span
+                                        class="material-symbols-outlined text-primary scale-125">precision_manufacturing</span>
+                                    <h3 class="text-2xl font-bold text-white">Cơ khí sắt tổng hợp - Inox</h3>
+                                </div>
+                                <p
+                                    class="text-sm text-neutral-300 line-clamp-2 max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    Gia công các thiết bị cơ khí, cửa cổng, cầu thang inox 304/316 với độ thẩm mỹ cao và
+                                    khả năng chống ăn mòn vượt trội trong mọi môi trường.
+                                </p>
+                                <button
+                                    class="mt-4 flex items-center gap-2 text-sm font-bold text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                                    Xem chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </button>
+                            </div>
+                            <div
+                                class="absolute top-4 right-4 bg-primary px-3 py-1 rounded text-[10px] font-black uppercase tracking-widest shadow-xl">
+                                Dịch vụ TOP 2</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="px-4 py-12 md:px-20 lg:px-40 bg-white/[0.02]">
+                <div class="mx-auto max-w-[1200px]">
+                    <h3 class="text-xl font-bold text-white mb-8 px-2 flex items-center gap-3">
+                        <span class="h-6 w-1 bg-primary rounded-full"></span>
+                        Các Dịch Vụ Khác
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div
+                            class="group bg-neutral-900/50 p-6 rounded-xl border border-white/5 hover:bg-neutral-800 transition-all">
+                            <div
+                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                <span class="material-symbols-outlined">window</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">Nhôm kính kiến trúc</h4>
+                            <p class="text-sm text-neutral-500 leading-relaxed mb-4">Lắp đặt hệ thống cửa nhôm Xingfa,
+                                vách kính cường lực cho các công trình dân dụng và văn phòng.</p>
+                            <a class="text-xs font-bold text-primary uppercase tracking-wider flex items-center gap-1"
+                                href="#">Tìm hiểu thêm <span
+                                    class="material-symbols-outlined text-xs">chevron_right</span></a>
+                        </div>
+                        <div
+                            class="group bg-neutral-900/50 p-6 rounded-xl border border-white/5 hover:bg-neutral-800 transition-all">
+                            <div
+                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                <span class="material-symbols-outlined">apartment</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">Xây dựng hoàn thiện</h4>
+                            <p class="text-sm text-neutral-500 leading-relaxed mb-4">Dịch vụ xây mới, cải tạo sửa chữa
+                                nhà phố, nhà xưởng với đội ngũ kỹ sư giàu kinh nghiệm.</p>
+                            <a class="text-xs font-bold text-primary uppercase tracking-wider flex items-center gap-1"
+                                href="#">Tìm hiểu thêm <span
+                                    class="material-symbols-outlined text-xs">chevron_right</span></a>
+                        </div>
+                        <div
+                            class="group bg-neutral-900/50 p-6 rounded-xl border border-white/5 hover:bg-neutral-800 transition-all">
+                            <div
+                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                <span class="material-symbols-outlined">format_paint</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">Sơn nước & Trang trí</h4>
+                            <p class="text-sm text-neutral-500 leading-relaxed mb-4">Thi công sơn bả, sơn chống nóng mái
+                                tôn, sơn trang trí nội ngoại thất với các dòng sơn cao cấp.</p>
+                            <a class="text-xs font-bold text-primary uppercase tracking-wider flex items-center gap-1"
+                                href="#">Tìm hiểu thêm <span
+                                    class="material-symbols-outlined text-xs">chevron_right</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="px-4 py-20 md:px-20 lg:px-40">
+                <div class="mx-auto max-w-[1200px]">
+                    <div class="relative overflow-hidden rounded-2xl bg-primary px-8 py-12 md:px-16 text-center">
+                        <div class="absolute top-0 right-0 -mr-20 -mt-20 h-64 w-64 rounded-full bg-white/10 blur-3xl">
+                        </div>
+                        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 h-64 w-64 rounded-full bg-black/10 blur-3xl">
+                        </div>
+                        <h2 class="relative text-3xl font-black text-white md:text-4xl">Bạn có dự án cần triển khai?
+                        </h2>
+                        <p class="relative mx-auto mt-4 max-w-xl text-lg text-white/80">
+                            Hãy để chúng tôi mang đến giải pháp kỹ thuật tối ưu và bền vững nhất cho công trình của bạn.
+                            Liên hệ ngay để nhận khảo sát miễn phí.
+                        </p>
+                        <div class="relative mt-10 flex flex-wrap justify-center gap-4">
+                            <button
+                                class="rounded-lg bg-white px-8 py-4 text-sm font-bold text-primary transition-all hover:bg-neutral-100 hover:scale-105 active:scale-95">
+                                Gửi yêu cầu báo giá
+                            </button>
+                            <button
+                                class="rounded-lg border border-white/30 bg-white/10 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all hover:bg-white/20">
+                                Gọi: 0911 300 304
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="border-t border-white/10 bg-background-dark px-4 py-12 md:px-20 lg:px-40 text-neutral-500">
+            <div class="mx-auto max-w-[1200px]">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                    <div class="col-span-1 md:col-span-1">
+                        <div class="flex items-center gap-3 text-white mb-6">
+                            <span class="material-symbols-outlined text-primary">construction</span>
+                            <span class="text-lg font-bold tracking-tight uppercase">Technical Services</span>
+                        </div>
+                        <p class="text-sm leading-relaxed">
+                            Cung cấp giải pháp kỹ thuật toàn diện cho ngành xây dựng và cơ khí tại Việt Nam. Uy tín tạo
+                            nên thương hiệu.
+                        </p>
+                    </div>
+                    <div>
+                        <h5 class="text-sm font-bold text-white mb-6 uppercase tracking-widest">Liên kết nhanh</h5>
+                        <ul class="space-y-4 text-sm">
+                            <li><a class="hover:text-primary transition-colors" href="#">Về chúng tôi</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Dịch vụ trọng tâm</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Dự án tiêu biểu</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Báo giá thi công</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-sm font-bold text-white mb-6 uppercase tracking-widest">Dịch vụ chính</h5>
+                        <ul class="space-y-4 text-sm">
+                            <li><a class="hover:text-primary transition-colors" href="#">Chống thấm mái tôn</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Gia công cơ khí Inox</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Cửa nhôm kính</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Xây dựng nhà xưởng</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-sm font-bold text-white mb-6 uppercase tracking-widest">Địa chỉ văn phòng</h5>
+                        <p class="text-sm leading-relaxed mb-4" data-location="Ho Chi Minh City, Vietnam">
+                            336 Nguyễn Hiến Lê, Hoà Xuân, Cẩm Lệ, <br />TP. Đà Nẵng, Việt Nam
+                        </p>
+                        <div class="flex gap-4">
+                            <a class="h-8 w-8 rounded bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                                href="#">
+                                <span class="material-symbols-outlined text-base">public</span>
+                            </a>
+                            <a class="h-8 w-8 rounded bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                                href="#">
+                                <span class="material-symbols-outlined text-base">mail</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[12px]">
+                    <p>© 2026 Technical Services Construction. All rights reserved.</p>
+                    <div class="flex gap-8">
+                        <a class="hover:text-white" href="#">Chính sách bảo mật</a>
+                        <a class="hover:text-white" href="#">Điều khoản dịch vụ</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
