@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Thư Viện Dự Án | Construction & Mechanical</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: { "primary": "#6d6f74", "background-light": "#f7f7f7", "background-dark": "#191919" },
+                    fontFamily: { "display": ["Space Grotesk"] },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass-nav {
+            background: rgba(25, 25, 25, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(109, 111, 116, 0.2);
+        }
+
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #6d6f74;
+            font-weight: 700;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav" data-aos="fade-down" data-aos-duration="1000">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+            <a href="Index.html" class="flex items-center gap-3 group">
+                <img src="/Images/Logo.png" alt="Logo"
+                    class="w-10 h-10 object-contain rounded-lg group-hover:scale-105 transition-transform">
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-white uppercase leading-none">Nhôm & Cơ Khí</h1>
+                    <p class="text-[10px] text-primary font-medium tracking-widest uppercase mt-1">Industrial Solutions
+                    </p>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center gap-10">
+                <a href="Index.html" class="nav-link">Trang chủ</a>
+                <a href="Services.html" class="nav-link">Dịch vụ</a>
+                <a href="Construction.html" class="nav-link active">Thư viện</a>
+                <a href="CEO.html" class="nav-link">CEO</a>
+                <a href="Contact.html" class="nav-link">Liên hệ</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="bg-primary hover:bg-white hover:text-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
+                    Báo giá ngay
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-16 px-6 lg:px-10">
+        <div class="max-w-7xl mx-auto relative rounded-3xl overflow-hidden min-h-[300px] flex items-center bg-[#1a1a1b] border border-white/5"
+            data-aos="fade-in">
+            <div class="absolute inset-0 z-0">
+                <img class="w-full h-full object-cover opacity-60"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtu-RQoX0fZTTkiI3wwYm0Q8d2GnrlBsWQ5HtAqLczQBU4hwQK4q2SqEbDbPiXlUrq3YU8V3iJLppTI3HJuwqXg-H5R_ityDgIAEaURjiKuDzG_t5jilIiNsKJ0snS5nWFKurWNSel_vChQolH7_CiVoc3Ku4EU39l5R_XOWu9oDvCH0PDJmYyXawwvO6zzNwua4zFArNRV1wGcz4KZCXZl0YzFsMtHm9GkukrmvgGX-xQBYY6pCLeTRvy5Fg_Gzzxd_AAoqoECGE"
+                    alt="Project Library Banner" />
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-background-dark via-background-dark/80 to-transparent">
+                </div>
+            </div>
+            <div class="relative z-10 p-10 md:p-16" data-aos="fade-right">
+                <div class="flex items-center gap-2 text-primary text-sm font-bold tracking-widest uppercase mb-4">
+                    <span class="w-8 h-[2px] bg-primary"></span> Portfolio
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Thư Viện Công Trình</h1>
+                <p class="text-slate-400 text-lg max-w-xl">
+                    Tổng hợp các dự án tiêu biểu từ thi công nhà xưởng, mái che tự động đến các công trình cơ khí chính
+                    xác.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pb-24 px-6 lg:px-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12 border-b border-white/10 pb-4 sticky top-20 z-40 bg-background-dark/95 backdrop-blur-sm pt-4"
+                data-aos="fade-up">
+                <div class="flex gap-8 overflow-x-auto w-full md:w-auto no-scrollbar">
+                    <button
+                        class="text-white border-b-2 border-primary pb-2 font-bold text-sm uppercase tracking-wide whitespace-nowrap">Tất
+                        cả</button>
+                    <button
+                        class="text-slate-500 hover:text-white pb-2 font-medium text-sm uppercase tracking-wide whitespace-nowrap transition-colors">Nhà
+                        Xưởng</button>
+                    <button
+                        class="text-slate-500 hover:text-white pb-2 font-medium text-sm uppercase tracking-wide whitespace-nowrap transition-colors">Mái
+                        Kéo</button>
+                    <button
+                        class="text-slate-500 hover:text-white pb-2 font-medium text-sm uppercase tracking-wide whitespace-nowrap transition-colors">Inox
+                        Y Tế</button>
+                </div>
+                <div class="flex items-center gap-2 text-slate-500 text-xs font-bold uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-sm">filter_list</span> <span>Lọc theo danh mục</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group project-card relative rounded-xl overflow-hidden bg-[#202022] border border-white/5 cursor-pointer"
+                    data-aos="fade-up" data-aos-delay="0">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDdv6wOvkKLOueKnix6jejUxAM48abvXPqOW5a_tJiqkZFuT8NScXlhRbQ2a-AVT56LtYKYr6Vpj2bU5-CcEGmEvCw1PgtkWaWahMLoimZmGB1HEfAgWvwRgwUQKPH2RoDpd7Ce0AY6cCvZMLXUaywBnigLuGJR6j7xTn8rhJhHsC4MLIdNXdJOV3EV0MER4Lq0osOxooeafmve48AONJDGPG2x5GY09WTYHuqWXzvLgONBuXegWqP8qCGn03tqgIyjeCilNb8XME"
+                            alt="Mai keo" class="w-full h-full object-cover transition-transform duration-700">
+                    </div>
+                    <div
+                        class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-primary text-xs font-bold uppercase tracking-widest mb-2">Mái Kéo Di
+                            Động</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Hệ thống mái che KCN Tân Bình</h3>
+                        <p class="text-slate-400 text-sm line-clamp-2">Thi công hệ thống mái xếp tự động khẩu độ lớn
+                            5000m2.</p>
+                    </div>
+                </div>
+                <div class="group project-card relative rounded-xl overflow-hidden bg-[#202022] border border-white/5 cursor-pointer"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLsI-E0CJ4nFFf29b6mNPMcclBiv3QUS4jxT4kL1XeV_GT_CcGfF0uztrvPyzF0ye6k--QvpVbS2NJxTwD9YO_rIfvm-Hc9pv_OB8q5nc0tSf9qajGw8V0mWJDAm1GMyr3_s4PK_oQTZWrojIYL2E-sbONiQYufepi7YYzoZ6IDNzS_EDNXRtpcwcAPx-7rxi4V3AUScwQTwojcYkdXkbBgnL8fua0O7uFPirQG9oC7BKZrkkwmnZIiwB8XW5ENzOAyMPQiErQ5X8"
+                            alt="Cua Inox" class="w-full h-full object-cover transition-transform duration-700">
+                    </div>
+                    <div
+                        class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-primary text-xs font-bold uppercase tracking-widest mb-2">Inox Cao Cấp</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Cổng Inox Mạ Vàng Biệt Thự</h3>
+                        <p class="text-slate-400 text-sm line-clamp-2">Gia công tinh xảo cổng Inox 304 mạ PVD vàng gương
+                            đẳng cấp.</p>
+                    </div>
+                </div>
+                <div class="group project-card relative rounded-xl overflow-hidden bg-[#202022] border border-white/5 cursor-pointer"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQZ2wrCaOBVbFlyicD_9j82mwg04O6K5RPiyec4M_85_cG4mrRtVpX-vYbaVHDWiJshwzzGuGCM9vBodKWA7fXjx-naJLOudS8yW2kzNhVW5Y4U3aYomFuidCv4e4O6SWXrCPRrchFL7v6c4DpfjD_JoPFmrjBY1RGiBXc8inj8tkN54Osj1ioTiuZ7vPHDx8Cw1jN2Ye-mnThZc_wPNaIKxkyi1uhzAm8Xw3y-ElhiHKXOYeK0DtZBrZF8Z4TdUs7TN79qMwIaAc"
+                            alt="Nha Xuong" class="w-full h-full object-cover transition-transform duration-700">
+                    </div>
+                    <div
+                        class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-primary text-xs font-bold uppercase tracking-widest mb-2">Kết Cấu Thép</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Nhà xưởng Công nghiệp nhẹ</h3>
+                        <p class="text-slate-400 text-sm line-clamp-2">Lắp dựng khung kèo thép tiền chế và lợp tôn chống
+                            nóng.</p>
+                    </div>
+                </div>
+                <div class="group project-card relative rounded-xl overflow-hidden bg-[#202022] border border-white/5 cursor-pointer"
+                    data-aos="fade-up" data-aos-delay="0">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4RN6ZDjNchzBeonkmYxInfNyNLg4v9i19YgivHwM3erAn5coKLS_19I_oNynNraJVxrRGgEFOzcAJRv6MDCkAAInuhBEFNThJwh-hQbwY0PwJ4elF6D9vpJ3oL_HUKfaWQIBHIF5Nqbhjjl5XeqDZIPNWAnUJtNijjUy4zaEjNLQ2r4thE85Gr29bL4zqWBORkAwjp1GJ6SVN6qrszYaP3VpdlLxwrbbHgcQOA-CoGsQ1N3_dCUqa5oA6-NsykSIxU666nHCKg6c"
+                            alt="Cua Sat" class="w-full h-full object-cover transition-transform duration-700">
+                    </div>
+                    <div
+                        class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-primary text-xs font-bold uppercase tracking-widest mb-2">Sắt Mỹ Thuật</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Cửa cổng CNC Hoa văn</h3>
+                    </div>
+                </div>
+                <div class="group project-card relative rounded-xl overflow-hidden bg-[#202022] border border-white/5 cursor-pointer"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9pz0ToX6bQwjNuYgsxjnTVAxM1uZCR5X8MosdzAv6VNxJ8SJ7I3MCvgv9it-Ifjw2cCtl-E9-w7MSJJ0Ek_1fIaI6Y4s7x32box_voVFyQjPUzNyUvBnC5XmKQl7vFmiuG2bRdOD_wqw7HIxfa_6IWnz21iG7ZZ0A9acNdGyweWCBrw8EBiZq8Bes7gd35u0XmggobUqpUvjPF3mTO9NmV7hVTBewxovwR2JVrCHQU34zIYRkeG98L5ctodplfzJJs04zJ5FiJBw"
+                            alt="Lan can" class="w-full h-full object-cover transition-transform duration-700">
+                    </div>
+                    <div
+                        class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-primary text-xs font-bold uppercase tracking-widest mb-2">Inox Dân Dụng</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Lan can kính trụ Inox</h3>
+                    </div>
+                </div>
+                <div class="group project-card relative rounded-xl overflow-hidden bg-[#202022] border border-white/5 cursor-pointer"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLRGLyv2p9PVHzTcH_uGJsJX9WPWR_TQE2fgscRaIhBLwf0T7QiD5pKa58puiSD4dOt0QTF4Yaj1tVXtqvYDCJGRJzk-I1VL5vI2ZiHSN08LTSCZwGF9Mqtr-uUYBchcsNj99kLVwb7fw8sWrOrH8m2Y2Kq5zDd6encC4lR0d6tqDrhsw2Kkn6PVQJWMSWBwncDUa7za5Xk-hpACio_4URSd6xUIaFFJ7c3C7MU5yIp_IHI895QOTEHEFx0HdThajSupJZh8hijmc"
+                            alt="Chong tham" class="w-full h-full object-cover transition-transform duration-700">
+                    </div>
+                    <div
+                        class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-primary text-xs font-bold uppercase tracking-widest mb-2">Chống Thấm</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Xử lý chống thấm mái tôn</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-16" data-aos="fade-up">
+                <button
+                    class="px-8 py-4 border border-white/10 rounded-lg text-white font-bold hover:bg-white/5 transition-colors flex items-center gap-2">
+                    Xem thêm dự án cũ hơn <span class="material-symbols-outlined">expand_more</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-background-dark border-t border-white/5 pt-20 pb-10 px-6 lg:px-10">
+        <div class="max-w-7xl mx-auto text-center text-slate-500 text-sm">
+            © 2026 XD & Cơ Khí. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script> AOS.init({ duration: 800, once: true }); </script>
+</body>
+
+</html>
