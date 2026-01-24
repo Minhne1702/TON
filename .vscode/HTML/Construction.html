@@ -16,9 +16,13 @@
             darkMode: "class",
             theme: {
                 extend: {
-                    colors: { "primary": "#6d6f74", "background-light": "#f7f7f7", "background-dark": "#191919" },
+                    colors: { "primary": "#6d6f74", "background-light": "#f7f7f7", "background-dark": "#191919", "surface": "#1e1e1e" },
                     fontFamily: { "display": ["Space Grotesk"] },
                     borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    animation: { 'fade-in': 'fadeIn 0.5s ease-out forwards' },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0', transform: 'translateY(10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }
+                    }
                 },
             },
         }
@@ -28,6 +32,7 @@
             font-family: 'Space Grotesk', sans-serif;
         }
 
+        /* ===== NAV ===== */
         .glass-nav {
             background: rgba(25, 25, 25, 0.85);
             backdrop-filter: blur(12px);
@@ -47,18 +52,67 @@
             font-weight: 700;
         }
 
-        .project-card:hover .project-overlay {
+        /* ===== GALLERY ITEM ===== */
+        .project-item {
             opacity: 1;
+            transform: scale(1);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            position: relative;
         }
 
-        .project-card:hover img {
+        /* Ẩn item khi filter */
+        .project-item.hide {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+            position: absolute;
+        }
+
+        /* Hiệu ứng zoom ảnh */
+        .project-item img {
+            transition: transform 0.5s ease;
+        }
+
+        .project-item:hover img {
             transform: scale(1.05);
         }
+
+        /* ===== FILTER BUTTON ===== */
+        .filter-btn {
+            transition: all 0.3s;
+            color: #64748b;
+            border-bottom: 2px solid transparent;
+        }
+
+        .filter-btn:hover {
+            color: white;
+        }
+
+        .filter-btn.active {
+            color: white;
+            border-color: #6d6f74;
+        }
+
+        /* ===== LIGHTBOX ===== */
+        #lightbox {
+            transition: opacity 0.3s ease;
+        }
+
+        #lightbox.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #lightbox:not(.open) {
+            opacity: 0;
+            pointer-events: none;
+        }
     </style>
+
 </head>
 
 <body
-    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white">
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white font-sans">
 
     <nav class="fixed top-0 w-full z-50 glass-nav" data-aos="fade-down" data-aos-duration="1000">
         <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
@@ -73,13 +127,13 @@
             </a>
             <div class="hidden md:flex items-center gap-8 lg:gap-10">
                 <a href="Index.html"
-                    class="nav-link text-white hover:text-primary font-medium text-sm uppercase tracking-wide transition-colors">Trang
+                    class="nav-link text-slate-300 hover:text-white font-medium text-sm uppercase tracking-wide transition-colors">Trang
                     chủ</a>
                 <a href="Services.html"
                     class="nav-link text-slate-300 hover:text-white font-medium text-sm uppercase tracking-wide transition-colors">Dịch
                     vụ</a>
                 <a href="Construction.html"
-                    class="nav-link text-slate-300 hover:text-white font-medium text-sm uppercase tracking-wide transition-colors">Thư
+                    class="nav-link text-white hover:text-primary font-medium text-sm uppercase tracking-wide transition-colors">Thư
                     viện</a>
                 <a href="CEO.html"
                     class="nav-link text-slate-300 hover:text-white font-medium text-sm uppercase tracking-wide transition-colors">CEO</a>
@@ -88,7 +142,7 @@
                     hệ</a>
             </div>
             <div class="flex items-center gap-4">
-                <button
+                <button onclick="window.location.href='Contact.html'"
                     class="bg-primary hover:bg-white hover:text-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
                     Báo giá ngay
                 </button>
@@ -101,7 +155,7 @@
             data-aos="fade-in">
             <div class="absolute inset-0 z-0">
                 <img class="w-full h-full object-cover opacity-60"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtu-RQoX0fZTTkiI3wwYm0Q8d2GnrlBsWQ5HtAqLczQBU4hwQK4q2SqEbDbPiXlUrq3YU8V3iJLppTI3HJuwqXg-H5R_ityDgIAEaURjiKuDzG_t5jilIiNsKJ0snS5nWFKurWNSel_vChQolH7_CiVoc3Ku4EU39l5R_XOWu9oDvCH0PDJmYyXawwvO6zzNwua4zFArNRV1wGcz4KZCXZl0YzFsMtHm9GkukrmvgGX-xQBYY6pCLeTRvy5Fg_Gzzxd_AAoqoECGE"
+                    src="/Images/Ton/z7461903584265_e34da7a592cfd5ad5de183547ec25ade.jpg"
                     alt="Project Library Banner" />
                 <div
                     class="absolute inset-0 bg-gradient-to-r from-background-dark via-background-dark/80 to-transparent">
@@ -122,105 +176,289 @@
 
     <section class="pb-24 px-6 lg:px-10">
         <div class="max-w-7xl mx-auto">
+
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12 border-b border-white/10 pb-4 sticky top-20 z-40 bg-background-dark/95 backdrop-blur-sm pt-4"
                 data-aos="fade-up">
-                <div class="flex gap-8 overflow-x-auto w-full md:w-auto no-scrollbar">
-                    <button
-                        class="text-white border-b-2 border-primary pb-2 font-bold text-sm uppercase tracking-wide whitespace-nowrap">Tất
-                        cả</button>
-                    <button
-                        class="text-slate-500 hover:text-white pb-2 font-medium text-sm uppercase tracking-wide whitespace-nowrap transition-colors">Nhà
-                        Xưởng</button>
-                    <button
-                        class="text-slate-500 hover:text-white pb-2 font-medium text-sm uppercase tracking-wide whitespace-nowrap transition-colors">Mái
-                        Kéo</button>
-                    <button
-                        class="text-slate-500 hover:text-white pb-2 font-medium text-sm uppercase tracking-wide whitespace-nowrap transition-colors">Inox
-                        Y Tế</button>
-                </div>
-                <div class="flex items-center gap-2 text-slate-500 text-xs font-bold uppercase tracking-widest">
-                    <span class="material-symbols-outlined text-sm">filter_list</span> <span>Lọc theo danh mục</span>
+                <div class="flex gap-8 overflow-x-auto w-full md:w-auto no-scrollbar" id="filter-container">
+                    <button id="btn-all"
+                        class="filter-btn active pb-2 font-bold text-sm uppercase tracking-wide whitespace-nowrap"
+                        onclick="filterSelection('all', this)">Tất cả</button>
+                    <button class="filter-btn pb-2 font-bold text-sm uppercase tracking-wide whitespace-nowrap"
+                        onclick="filterSelection('cua', this)">Cửa</button>
+                    <button class="filter-btn pb-2 font-bold text-sm uppercase tracking-wide whitespace-nowrap"
+                        onclick="filterSelection('maikeo', this)">Mái Kéo</button>
+                    <button class="filter-btn pb-2 font-bold text-sm uppercase tracking-wide whitespace-nowrap"
+                        onclick="filterSelection('ngoi', this)">Ngói</button>
+                    <button class="filter-btn pb-2 font-bold text-sm uppercase tracking-wide whitespace-nowrap"
+                        onclick="filterSelection('ton', this)">Tôn</button>
+                    <button class="filter-btn pb-2 font-bold text-sm uppercase tracking-wide whitespace-nowrap"
+                        onclick="filterSelection('khac', this)">Khác</button>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="group project-card relative rounded-xl overflow-hidden bg-[#202022] border border-white/5 cursor-pointer"
-                    data-aos="fade-up" data-aos-delay="0">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="maikeo" onclick="openLightbox(this)">
                     <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDdv6wOvkKLOueKnix6jejUxAM48abvXPqOW5a_tJiqkZFuT8NScXlhRbQ2a-AVT56LtYKYr6Vpj2bU5-CcEGmEvCw1PgtkWaWahMLoimZmGB1HEfAgWvwRgwUQKPH2RoDpd7Ce0AY6cCvZMLXUaywBnigLuGJR6j7xTn8rhJhHsC4MLIdNXdJOV3EV0MER4Lq0osOxooeafmve48AONJDGPG2x5GY09WTYHuqWXzvLgONBuXegWqP8qCGn03tqgIyjeCilNb8XME"
-                            alt="Mai keo" class="w-full h-full object-cover transition-transform duration-700">
-                    </div>
-                    <div
-                        class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-primary text-xs font-bold uppercase tracking-widest mb-2">Mái Kéo Di
-                            Động</span>
-                        <h3 class="text-xl font-bold text-white mb-2">Hệ thống mái che KCN Tân Bình</h3>
-                        <p class="text-slate-400 text-sm line-clamp-2">Thi công hệ thống mái xếp tự động khẩu độ lớn
-                            5000m2.</p>
+                        <img src="/Images/Maikeo/z7461903990246_569a03360d4f0e6098d36a10a95223da.jpg" alt="Mái Kéo"
+                            class="w-full h-full object-cover">
                     </div>
                 </div>
-                <div class="group project-card relative rounded-xl overflow-hidden bg-[#202022] border border-white/5 cursor-pointer"
-                    data-aos="fade-up" data-aos-delay="100">
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="maikeo" onclick="openLightbox(this)">
                     <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLsI-E0CJ4nFFf29b6mNPMcclBiv3QUS4jxT4kL1XeV_GT_CcGfF0uztrvPyzF0ye6k--QvpVbS2NJxTwD9YO_rIfvm-Hc9pv_OB8q5nc0tSf9qajGw8V0mWJDAm1GMyr3_s4PK_oQTZWrojIYL2E-sbONiQYufepi7YYzoZ6IDNzS_EDNXRtpcwcAPx-7rxi4V3AUScwQTwojcYkdXkbBgnL8fua0O7uFPirQG9oC7BKZrkkwmnZIiwB8XW5ENzOAyMPQiErQ5X8"
-                            alt="Cua Inox" class="w-full h-full object-cover transition-transform duration-700">
-                    </div>
-                    <div
-                        class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-primary text-xs font-bold uppercase tracking-widest mb-2">Inox Cao Cấp</span>
-                        <h3 class="text-xl font-bold text-white mb-2">Cổng Inox Mạ Vàng Biệt Thự</h3>
-                        <p class="text-slate-400 text-sm line-clamp-2">Gia công tinh xảo cổng Inox 304 mạ PVD vàng gương
-                            đẳng cấp.</p>
+                        <img src="/Images/Maikeo/z7461903994089_c676fb094140bc64a1f5962e171557e4.jpg" alt="Mái Kéo"
+                            class="w-full h-full object-cover">
                     </div>
                 </div>
-                <div class="group project-card relative rounded-xl overflow-hidden bg-[#202022] border border-white/5 cursor-pointer"
-                    data-aos="fade-up" data-aos-delay="200">
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="maikeo" onclick="openLightbox(this)">
                     <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQZ2wrCaOBVbFlyicD_9j82mwg04O6K5RPiyec4M_85_cG4mrRtVpX-vYbaVHDWiJshwzzGuGCM9vBodKWA7fXjx-naJLOudS8yW2kzNhVW5Y4U3aYomFuidCv4e4O6SWXrCPRrchFL7v6c4DpfjD_JoPFmrjBY1RGiBXc8inj8tkN54Osj1ioTiuZ7vPHDx8Cw1jN2Ye-mnThZc_wPNaIKxkyi1uhzAm8Xw3y-ElhiHKXOYeK0DtZBrZF8Z4TdUs7TN79qMwIaAc"
-                            alt="Nha Xuong" class="w-full h-full object-cover transition-transform duration-700">
-                    </div>
-                    <div
-                        class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-primary text-xs font-bold uppercase tracking-widest mb-2">Kết Cấu Thép</span>
-                        <h3 class="text-xl font-bold text-white mb-2">Nhà xưởng Công nghiệp nhẹ</h3>
-                        <p class="text-slate-400 text-sm line-clamp-2">Lắp dựng khung kèo thép tiền chế và lợp tôn chống
-                            nóng.</p>
+                        <img src="/Images/Maikeo/z7461903995897_0c79dbc8367956f022caf15420b5a204.jpg" alt="Mái Kéo"
+                            class="w-full h-full object-cover">
                     </div>
                 </div>
-                <div class="group project-card relative rounded-xl overflow-hidden bg-[#202022] border border-white/5 cursor-pointer"
-                    data-aos="fade-up" data-aos-delay="0">
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="maikeo" onclick="openLightbox(this)">
                     <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4RN6ZDjNchzBeonkmYxInfNyNLg4v9i19YgivHwM3erAn5coKLS_19I_oNynNraJVxrRGgEFOzcAJRv6MDCkAAInuhBEFNThJwh-hQbwY0PwJ4elF6D9vpJ3oL_HUKfaWQIBHIF5Nqbhjjl5XeqDZIPNWAnUJtNijjUy4zaEjNLQ2r4thE85Gr29bL4zqWBORkAwjp1GJ6SVN6qrszYaP3VpdlLxwrbbHgcQOA-CoGsQ1N3_dCUqa5oA6-NsykSIxU666nHCKg6c"
-                            alt="Cua Sat" class="w-full h-full object-cover transition-transform duration-700">
-                    </div>
-                    <div
-                        class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-primary text-xs font-bold uppercase tracking-widest mb-2">Sắt Mỹ Thuật</span>
-                        <h3 class="text-xl font-bold text-white mb-2">Cửa cổng CNC Hoa văn</h3>
+                        <img src="/Images/Maikeo/z7461904002010_9b1c7724e3d9e1789754d25bdbf8584e.jpg" alt="Mái Kéo"
+                            class="w-full h-full object-cover">
                     </div>
                 </div>
-                <div class="group project-card relative rounded-xl overflow-hidden bg-[#202022] border border-white/5 cursor-pointer"
-                    data-aos="fade-up" data-aos-delay="100">
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="maikeo" onclick="openLightbox(this)">
                     <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9pz0ToX6bQwjNuYgsxjnTVAxM1uZCR5X8MosdzAv6VNxJ8SJ7I3MCvgv9it-Ifjw2cCtl-E9-w7MSJJ0Ek_1fIaI6Y4s7x32box_voVFyQjPUzNyUvBnC5XmKQl7vFmiuG2bRdOD_wqw7HIxfa_6IWnz21iG7ZZ0A9acNdGyweWCBrw8EBiZq8Bes7gd35u0XmggobUqpUvjPF3mTO9NmV7hVTBewxovwR2JVrCHQU34zIYRkeG98L5ctodplfzJJs04zJ5FiJBw"
-                            alt="Lan can" class="w-full h-full object-cover transition-transform duration-700">
-                    </div>
-                    <div
-                        class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-primary text-xs font-bold uppercase tracking-widest mb-2">Inox Dân Dụng</span>
-                        <h3 class="text-xl font-bold text-white mb-2">Lan can kính trụ Inox</h3>
+                        <img src="/Images/Maikeo/z7461904002267_0f8aad6e99969e7bdacebf968e4b3ac9.jpg" alt="Mái Kéo"
+                            class="w-full h-full object-cover">
                     </div>
                 </div>
-                <div class="group project-card relative rounded-xl overflow-hidden bg-[#202022] border border-white/5 cursor-pointer"
-                    data-aos="fade-up" data-aos-delay="200">
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="maikeo" onclick="openLightbox(this)">
                     <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLRGLyv2p9PVHzTcH_uGJsJX9WPWR_TQE2fgscRaIhBLwf0T7QiD5pKa58puiSD4dOt0QTF4Yaj1tVXtqvYDCJGRJzk-I1VL5vI2ZiHSN08LTSCZwGF9Mqtr-uUYBchcsNj99kLVwb7fw8sWrOrH8m2Y2Kq5zDd6encC4lR0d6tqDrhsw2Kkn6PVQJWMSWBwncDUa7za5Xk-hpACio_4URSd6xUIaFFJ7c3C7MU5yIp_IHI895QOTEHEFx0HdThajSupJZh8hijmc"
-                            alt="Chong tham" class="w-full h-full object-cover transition-transform duration-700">
+                        <img src="/Images/Maikeo/z7461904036166_6ecb0f0a5bc4effb6c65da4152320081.jpg" alt="Mái Kéo"
+                            class="w-full h-full object-cover">
                     </div>
-                    <div
-                        class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-primary text-xs font-bold uppercase tracking-widest mb-2">Chống Thấm</span>
-                        <h3 class="text-xl font-bold text-white mb-2">Xử lý chống thấm mái tôn</h3>
+                </div>
+
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="cua" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Cua/z7461902475126_6064d66bfa8fbe418cba8200555ca67c.jpg" alt="Cửa"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="cua" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Cua/z7461902477717_6f15cd567463a5d5fabcd7c194cf0ac6.jpg" alt="Cửa"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="cua" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Cua/z7463351403215_95574179249dfbcd2267e9d745cfe97e.jpg" alt="Cửa"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="cua" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Cua/z7463351407173_038d8782a704ff81a681723d8f22e7cf.jpg" alt="Cửa"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="cua" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Cua/z7463351412485_b137dca5bca3ecc33f36fc41d0244e06.jpg" alt="Cửa"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="cua" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Cua/z7463351418433_dcdec988db004b585231416dadbc6fdb.jpg" alt="Cửa"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="cua" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Cua/z7463352255954_6d5876cb1bf760afcd0be5df6a1d30e0.jpg" alt="Cửa"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="cua" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Cua/z7463352260469_426872c6189dd4c1082fefe56d46b5b4.jpg" alt="Cửa"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="cua" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Cua/z7463352265702_2062251d5e8ab653a9dd7934319c1197.jpg" alt="Cửa"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="cua" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Cua/z7463352269386_e112ff955e4f7506d6bfd60c3e1b5eac.jpg" alt="Cửa"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="ton" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Ton/z7461903584265_e34da7a592cfd5ad5de183547ec25ade.jpg" alt="Tôn"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="ton" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Ton/z7461903585160_8ae9f1501bb5be4deebe1b3ee61e805a.jpg" alt="Tôn"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="ton" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Ton/z7461903588597_ca61734ecb0aab239b0993418b41a7eb.jpg" alt="Tôn"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="ton" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Ton/z7461903589422_fe98a5e3e809e3a81af4abf699ab7ac1.jpg" alt="Tôn"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="ton" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Ton/z7461903591021_0a974a1387991c9ff063ae76b19285ef.jpg" alt="Tôn"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="ton" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Ton/z7461903592608_a0c2549089a1bf443ce3574fc4c7e065.jpg" alt="Tôn"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="ton" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Ton/z7461903593889_4dd7442597ff09b715677024f98aae4a.jpg" alt="Tôn"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="ton" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Ton/z7461903594384_c912808d5be000649487b8122fc3b22c.jpg" alt="Tôn"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="ton" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Ton/z7461903595237_7c3132a2fc78ff89864fb688c393a825.jpg" alt="Tôn"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="ton" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Ton/z7461903600709_2b2df3dcf0d76355ebe8bc71418c0454.jpg" alt="Tôn"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="ngoi" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="../Images/Ngoi/TEN_ANH_CUA_BAN.jpg" alt="Ngói" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="khac" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Khac/z7463353407851_b1d2c42dbd24f7746c28b5cd55f5f850.jpg" alt="Khác"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="khac" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Khac/z7463353411851_fde5b64790af4ecaf56b91cee5672fed.jpg" alt="Khác"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="khac" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Khac/z7463353415516_8c556de893cc084e77ace7afe8f897b1.jpg" alt="Khác"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="khac" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Khac/z7463353421724_331fe1a3020c042196168cdbfa78e1bd.jpg" alt="Khác"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="khac" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Khac/z7463353425706_31ad7cdd96d787975658dea0589e818c.jpg" alt="Khác"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="khac" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Khac/z7463353430493_56755b124e90865fbb063be172e8efbf.jpg" alt="Khác"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="khac" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Khac/z7463353435708_c7a3d90d9447a24c0fdefa0bcada5a8b.jpg" alt="Khác"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="khac" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Khac/z7463353442882_1c68a6960e3f249821a47405dadf7fbc.jpg" alt="Khác"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="khac" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Khac/z7463353444197_4bdb8a38ee9c165d2e21e7a5a59809b4.jpg" alt="Khác"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
+                    data-category="khac" onclick="openLightbox(this)">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="/Images/Khac/z7463353450143_4896b836ae6bddf0f5eb9997fb41befd.jpg" alt="Khác"
+                            class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
@@ -234,6 +472,16 @@
         </div>
     </section>
 
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
+        onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-50">
+            <span class="material-symbols-outlined text-4xl">close</span>
+        </button>
+        <img id="lightbox-img" src="" alt="Full size"
+            class="max-w-full max-h-full object-contain rounded shadow-2xl transition-transform duration-300"
+            onclick="event.stopPropagation()">
+    </div>
+
     <footer class="bg-background-dark border-t border-white/5 pt-20 pb-10 px-6 lg:px-10">
         <div class="max-w-7xl mx-auto text-center text-slate-500 text-sm">
             © 2026 XD & Cơ Khí. All rights reserved.
@@ -241,7 +489,73 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script> AOS.init({ duration: 800, once: true }); </script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        // Tự động gọi hàm filterSelection('all') khi trang web tải xong
+        window.onload = function () {
+            // Giả lập việc bấm vào nút "Tất cả"
+            const btnAll = document.getElementById('btn-all');
+            filterSelection('all', btnAll);
+        };
+
+        /* --- LOGIC LỌC ẢNH --- */
+        function filterSelection(category, btnElement) {
+            const items = document.getElementsByClassName("project-item");
+
+            // Active button
+            const btns = document.getElementsByClassName("filter-btn");
+            for (let b of btns) b.classList.remove("active");
+            if (btnElement) btnElement.classList.add("active");
+
+            for (let item of items) {
+                const itemCategory = item.getAttribute("data-category");
+
+                if (category === "all" || itemCategory === category) {
+                    item.classList.remove("hide");
+                } else {
+                    item.classList.add("hide");
+                }
+            }
+        }
+
+        // Load mặc định
+        window.onload = () => {
+            filterSelection("all", document.getElementById("btn-all"));
+        };
+
+        /* --- LOGIC LIGHTBOX (POPUP ẢNH) --- */
+        function openLightbox(element) {
+            // Lấy đường dẫn ảnh từ thẻ img con
+            const img = element.querySelector('img');
+            const src = img.src;
+
+            // Gán vào lightbox
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+
+            lightboxImg.src = src;
+            lightbox.classList.add('open');
+
+            // Khóa cuộn trang
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('open');
+
+            // Mở khóa cuộn trang
+            document.body.style.overflow = 'auto';
+        }
+
+        // Đóng bằng phím ESC
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 
 </html>
