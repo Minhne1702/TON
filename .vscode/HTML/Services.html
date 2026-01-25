@@ -1,102 +1,170 @@
 <!DOCTYPE html>
-<html class="dark" lang="vi">
+<html class="dark scroll-smooth" lang="vi">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Danh Mục Dịch Vụ Kỹ Thuật</title>
+    <title>Nhôm & Cơ Khí | Construction & Mechanical</title>
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet" />
+
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#6d6f74",
+                        "primary": "#6d6f74",       // Xám kim loại chủ đạo
+                        "primary-hover": "#8b8d93",
                         "background-light": "#f7f7f7",
-                        "background-dark": "#191919",
+                        "background-dark": "#121212", // Đen sâu đồng bộ
+                        "surface": "#1e1e1e"          // Màu nền các thẻ card
                     },
-                    fontFamily: { "display": ["Space Grotesk"] },
-                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    // Cấu hình Font mặc định là Space Grotesk cho toàn web
+                    fontFamily: {
+                        "sans": ["Space Grotesk", "ui-sans-serif", "system-ui", "-apple-system", "sans-serif"]
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'shine': 'shine 3s infinite linear',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0', transform: 'translateY(10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        shine: { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(100%)' } },
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } }
+                    }
                 },
             },
         }
     </script>
     <style>
+        /* CSS Dùng chung bắt buộc */
         body {
             font-family: 'Space Grotesk', sans-serif;
         }
 
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #6d6f74;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b8d93;
+        }
+
+        /* Glass Navbar Effect */
         .glass-nav {
-            background: rgba(25, 25, 25, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(109, 111, 116, 0.2);
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .nav-link {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: white;
-            transition: all 0.3s;
+        /* Button Shine Effect */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
         }
 
-        .nav-link:hover,
-        .nav-link.active {
-            color: #6d6f74;
-            font-weight: 700;
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: skewX(-25deg);
+            animation: shine-pass 3s infinite;
         }
 
-        .service-card-hover:hover .card-overlay {
-            background-color: rgba(109, 111, 116, 0.4);
-        }
-
-        .service-card-hover:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Animation for Modal */
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
+        @keyframes shine-pass {
+            0% {
+                left: -100%;
             }
 
-            to {
-                opacity: 1;
-                transform: scale(1);
+            20% {
+                left: 200%;
+            }
+
+            100% {
+                left: 200%;
             }
         }
 
-        .modal-animate {
-            animation: modalFadeIn 0.3s ease-out forwards;
+        /* CSS riêng cho Gallery/Modal (Nếu trang nào không dùng thì để cũng không sao) */
+        .project-item {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .project-item.hide {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+            position: absolute;
+        }
+
+        #lightbox {
+            transition: opacity 0.3s ease;
+        }
+
+        #lightbox.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #lightbox:not(.open) {
+            opacity: 0;
+            pointer-events: none;
         }
     </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-white font-display overflow-x-hidden">
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white font-sans antialiased overflow-x-hidden">
 
-    <nav class="fixed top-0 w-full z-50 glass-nav" data-aos="fade-down" data-aos-duration="1000">
+    <nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
             <a href="Index.html" class="flex items-center gap-3 group">
                 <img src="/Images/Logo.png" alt="Logo"
                     class="w-20 h-20 object-contain rounded-lg group-hover:scale-105 transition-transform">
                 <div>
-                    <h1 class="text-xl font-bold tracking-tight text-white uppercase leading-none">Nhôm & Cơ Khí</h1>
-                    <p class="text-[10px] text-primary font-medium tracking-widest uppercase mt-1">Industrial Solutions
-                    </p>
+                    <h1
+                        class="text-xl font-bold tracking-tight text-white uppercase leading-none group-hover:text-primary transition-colors">
+                        Nhôm & Cơ Khí</h1>
+                    <p class="text-[10px] text-primary font-medium tracking-widest uppercase mt-0.5">Industrial
+                        Solutions</p>
                 </div>
             </a>
+
             <div class="hidden md:flex items-center gap-8 lg:gap-10">
                 <a href="Index.html"
-                    class="nav-link text-white hover:text-primary font-medium text-sm uppercase tracking-wide transition-colors">Trang
+                    class="nav-link text-slate-300 hover:text-white font-medium text-sm uppercase tracking-wide transition-colors">Trang
                     chủ</a>
                 <a href="Services.html"
-                    class="nav-link text-slate-300 hover:text-white font-medium text-sm uppercase tracking-wide transition-colors">Dịch
+                    class="nav-link text-white hover:text-primary font-bold text-sm uppercase tracking-wide transition-colors border-b-2 border-primary pb-1">Dịch
                     vụ</a>
                 <a href="Construction.html"
                     class="nav-link text-slate-300 hover:text-white font-medium text-sm uppercase tracking-wide transition-colors">Thư
@@ -107,26 +175,29 @@
                     class="nav-link text-slate-300 hover:text-white font-medium text-sm uppercase tracking-wide transition-colors">Liên
                     hệ</a>
             </div>
+
             <div class="flex items-center gap-4">
-                <button
-                    class="bg-primary hover:bg-white hover:text-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
+                <button onclick="window.location.href='Contact.html'"
+                    class="btn-shine bg-primary hover:bg-white hover:text-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-2 shadow-lg shadow-primary/20 transform hover:-translate-y-0.5">
                     Báo giá ngay
                 </button>
             </div>
         </div>
     </nav>
 
-    <main class="flex-1 pt-24">
-        <section class="relative px-4 py-12 md:px-20 lg:px-40" data-aos="zoom-in">
-            <div class="mx-auto max-w-[1200px]">
-                <div class="relative overflow-hidden rounded-xl bg-neutral-900 aspect-[21/9] md:aspect-[25/8]">
+    <main class="flex-1 pt-24 min-h-screen">
+        <section class="relative px-6 md:px-10 lg:px-20 py-8" data-aos="zoom-in">
+            <div class="mx-auto max-w-7xl">
+                <div
+                    class="relative overflow-hidden rounded-2xl bg-surface aspect-[21/9] md:aspect-[25/8] border border-white/5">
                     <div class="absolute inset-0 bg-cover bg-center"
-                        style="background-image: linear-gradient(to right, rgba(20, 20, 21, 0.95), rgba(20, 20, 21, 0.4)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0p2l55QrCUxB7J-VLcxlP2D60gbUJcvq1NQGpt2YSYA_p4Dg7dV0cwLe5tYNL_tZnJlTiC-JnSogF8qh_B_87mVwTV9XZrHsc7_oMommhfuwecPt6v2pis2LWwrwRZb7k9pc6aDDJ7IcpZAFw-SUQgVuaev-6wI8yh2OGSlATKl6xsjqThAvqrS4dS3wPK2dEVsCYu5zcR0rvp8drU6ioN0KhUfZDZKvKHUMDIqXFcpkOQ_UTdlS1Ev33vXG47KNOXtj4iuwPh9I');">
+                        style="background-image: linear-gradient(to right, rgba(18, 18, 18, 0.95), rgba(18, 18, 18, 0.4)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0p2l55QrCUxB7J-VLcxlP2D60gbUJcvq1NQGpt2YSYA_p4Dg7dV0cwLe5tYNL_tZnJlTiC-JnSogF8qh_B_87mVwTV9XZrHsc7_oMommhfuwecPt6v2pis2LWwrwRZb7k9pc6aDDJ7IcpZAFw-SUQgVuaev-6wI8yh2OGSlATKl6xsjqThAvqrS4dS3wPK2dEVsCYu5zcR0rvp8drU6ioN0KhUfZDZKvKHUMDIqXFcpkOQ_UTdlS1Ev33vXG47KNOXtj4iuwPh9I');">
                     </div>
                     <div class="relative flex h-full flex-col justify-center px-8 md:px-16 gap-4">
                         <span
-                            class="inline-block w-fit rounded bg-primary/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-primary border border-primary/30">Chuyên
-                            nghiệp - Bền vững</span>
+                            class="inline-block w-fit rounded bg-primary/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-primary border border-primary/30">
+                            Chuyên nghiệp - Bền vững
+                        </span>
                         <h1
                             class="max-w-2xl text-4xl font-black leading-tight tracking-tighter text-white md:text-5xl lg:text-6xl">
                             Danh Mục Dịch Vụ <br /><span class="text-primary">Kỹ Thuật Cao</span>
@@ -136,16 +207,17 @@
             </div>
         </section>
 
-        <section class="px-4 py-8 md:px-20 lg:px-40">
-            <div class="mx-auto max-w-[1200px]">
+        <section class="px-6 md:px-10 lg:px-20 py-8">
+            <div class="mx-auto max-w-7xl">
                 <div class="flex items-end justify-between border-b border-white/10 pb-4 mb-8" data-aos="fade-up">
                     <div>
                         <h2 class="text-2xl font-bold text-white">Dịch Vụ Trọng Tâm</h2>
-                        <p class="text-sm text-neutral-500">Thế mạnh hàng đầu của chúng tôi trong ngành kỹ thuật</p>
+                        <p class="text-sm text-slate-400 mt-1">Thế mạnh hàng đầu của chúng tôi trong ngành kỹ thuật</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="group relative overflow-hidden rounded-xl bg-neutral-800 service-card-hover transition-all duration-500 border border-white/5 hover:border-primary/50"
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="group relative overflow-hidden rounded-2xl bg-surface service-card-hover transition-all duration-500 border border-white/5 hover:border-primary/50 shadow-xl"
                         data-aos="fade-up" data-aos-delay="100">
                         <div class="aspect-video overflow-hidden">
                             <img alt="Waterproofing"
@@ -153,15 +225,15 @@
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuArsFuFXi2WibRszFFf6L7ByWiLC7HtC2DZLEDxBkg6ZoCeDWnBu8YKtYw5OjCKuJ5rf8dDV0fKFW86fiBJ6PdLBJ8sUne1P-mnlzm25CjKVe6uuY1itRfD7fPiTuFovsAQ3mfFo-7uyunp8qthbatjM0-DyZ1khVvkgjlUyHNzs0wwjmF1SBUBn7gZ295pZfQjtKarPtntLPf80qLRY5mGl-xsf7NIqanNui5uEb8gBKXQ8wYVd7BKpEinkONen_Bw2NytZcv_LcQ" />
                         </div>
                         <div
-                            class="card-overlay absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent transition-colors duration-300">
+                            class="card-overlay absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent transition-colors duration-300">
                         </div>
-                        <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
                             <div class="flex items-center gap-3 mb-2">
                                 <span class="material-symbols-outlined text-primary scale-125">water_drop</span>
                                 <h3 class="text-2xl font-bold text-white">Chống thấm nhà bằng tôn</h3>
                             </div>
                             <p
-                                class="text-sm text-neutral-300 line-clamp-2 max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                class="text-sm text-slate-300 line-clamp-2 max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 Sử dụng công nghệ màng khò và sơn epoxy chuyên dụng.
                             </p>
                             <button
@@ -171,27 +243,28 @@
                             </button>
                         </div>
                         <div
-                            class="absolute top-4 right-4 bg-primary px-3 py-1 rounded text-[10px] font-black uppercase tracking-widest shadow-xl">
-                            Dịch vụ TOP 1</div>
+                            class="absolute top-4 right-4 bg-primary px-3 py-1 rounded text-[10px] font-black uppercase tracking-widest shadow-xl text-white">
+                            Dịch vụ TOP 1
+                        </div>
                     </div>
 
-                    <div class="group relative overflow-hidden rounded-xl bg-neutral-800 service-card-hover transition-all duration-500 border border-white/5 hover:border-primary/50"
+                    <div class="group relative overflow-hidden rounded-2xl bg-surface service-card-hover transition-all duration-500 border border-white/5 hover:border-primary/50 shadow-xl"
                         data-aos="fade-up" data-aos-delay="200">
                         <div class="aspect-video overflow-hidden">
                             <img alt="Mechanical" class="h-full w-full object-cover transition-transform duration-700"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs9wu82szP3yuWvxtgmC3jl5K1QwqVJE2lBFZ4qF2gDeMMj7alNdqKZ4vRo8IvtrheyA97JNiCwGBCHqmjuMkRxpvL3owx1he9o9c-6NdzMzAaa4VcdV5QkAcA63UAe708gFR6UaAlatuoJxRGjKtlyjdRjWRqgeQonkgdU-NZO_acU8qplFfesDX4cmjlg34uxo2zM1B1MeqeNVzP3p1mfhKyH2CNduo8_uYaHYFi-JsX3jYTyYC7OZjvxvUmnxlPtYdf96kPc0U" />
                         </div>
                         <div
-                            class="card-overlay absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent transition-colors duration-300">
+                            class="card-overlay absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent transition-colors duration-300">
                         </div>
-                        <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
                             <div class="flex items-center gap-3 mb-2">
                                 <span
                                     class="material-symbols-outlined text-primary scale-125">precision_manufacturing</span>
                                 <h3 class="text-2xl font-bold text-white">Cơ khí sắt tổng hợp - Inox</h3>
                             </div>
                             <p
-                                class="text-sm text-neutral-300 line-clamp-2 max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                class="text-sm text-slate-300 line-clamp-2 max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 Gia công các thiết bị cơ khí, cửa cổng, cầu thang inox 304/316.
                             </p>
                             <button
@@ -201,86 +274,195 @@
                             </button>
                         </div>
                         <div
-                            class="absolute top-4 right-4 bg-primary px-3 py-1 rounded text-[10px] font-black uppercase tracking-widest shadow-xl">
-                            Dịch vụ TOP 2</div>
+                            class="absolute top-4 right-4 bg-primary px-3 py-1 rounded text-[10px] font-black uppercase tracking-widest shadow-xl text-white">
+                            Dịch vụ TOP 2
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="px-4 py-12 md:px-20 lg:px-40 bg-white/[0.02]">
-            <div class="mx-auto max-w-[1200px]" data-aos="fade-up">
-                <h3 class="text-xl font-bold text-white mb-8 px-2 flex items-center gap-3">
+        <section class="px-6 md:px-10 lg:px-20 py-12 bg-surface/30">
+            <div class="mx-auto max-w-7xl" data-aos="fade-up">
+                <h3 class="text-xl font-bold text-white mb-8 flex items-center gap-3">
                     <span class="h-6 w-1 bg-primary rounded-full"></span> Các Dịch Vụ Khác
                 </h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div
-                        class="group bg-neutral-900/50 p-6 rounded-xl border border-white/5 hover:bg-neutral-800 transition-all hover:-translate-y-1">
+                        class="group bg-surface p-6 rounded-xl border border-white/5 hover:border-primary/50 transition-all hover:-translate-y-1 shadow-lg">
                         <div
                             class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined">window</span>
+                            <span class="material-symbols-outlined">factory</span>
                         </div>
-                        <h4 class="text-lg font-bold text-white mb-2">Nhôm kính kiến trúc</h4>
-                        <p class="text-sm text-neutral-500 leading-relaxed mb-4">Lắp đặt hệ thống cửa nhôm Xingfa, vách
-                            kính cường lực.</p>
+                        <h4 class="text-lg font-bold text-white mb-2">Nhà xưởng công nghiệp</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Thi công trọn gói nhà xưởng, nhà kho với kết
+                            cấu vững chắc, đạt chuẩn.</p>
                     </div>
+
                     <div
-                        class="group bg-neutral-900/50 p-6 rounded-xl border border-white/5 hover:bg-neutral-800 transition-all hover:-translate-y-1">
+                        class="group bg-surface p-6 rounded-xl border border-white/5 hover:border-primary/50 transition-all hover:-translate-y-1 shadow-lg">
                         <div
                             class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined">apartment</span>
+                            <span class="material-symbols-outlined">engineering</span>
                         </div>
-                        <h4 class="text-lg font-bold text-white mb-2">Xây dựng hoàn thiện</h4>
-                        <p class="text-sm text-neutral-500 leading-relaxed mb-4">Dịch vụ xây mới, cải tạo sửa chữa nhà
-                            phố, nhà xưởng.</p>
+                        <h4 class="text-lg font-bold text-white mb-2">Nhà thép tiền chế</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Giải pháp khung kèo thép lắp ghép nhanh chóng,
+                            tiết kiệm chi phí.</p>
                     </div>
+
                     <div
-                        class="group bg-neutral-900/50 p-6 rounded-xl border border-white/5 hover:bg-neutral-800 transition-all hover:-translate-y-1">
+                        class="group bg-surface p-6 rounded-xl border border-white/5 hover:border-primary/50 transition-all hover:-translate-y-1 shadow-lg">
                         <div
                             class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined">format_paint</span>
+                            <span class="material-symbols-outlined">door_front</span>
                         </div>
-                        <h4 class="text-lg font-bold text-white mb-2">Sơn nước & Trang trí</h4>
-                        <p class="text-sm text-neutral-500 leading-relaxed mb-4">Thi công sơn bả, sơn chống nóng mái
-                            tôn, sơn trang trí.</p>
+                        <h4 class="text-lg font-bold text-white mb-2">Cửa cổng & Cửa cuốn</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Gia công cửa sắt CNC, cửa cổng inox, cửa cuốn
+                            và cửa kéo các loại.</p>
+                    </div>
+
+                    <div
+                        class="group bg-surface p-6 rounded-xl border border-white/5 hover:border-primary/50 transition-all hover:-translate-y-1 shadow-lg">
+                        <div
+                            class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined">stairs</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Cầu thang & Lan can</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Cầu thang thoát hiểm, cầu thang xoắn, lan can
+                            kính và tay vịn inox.</p>
+                    </div>
+
+                    <div
+                        class="group bg-surface p-6 rounded-xl border border-white/5 hover:border-primary/50 transition-all hover:-translate-y-1 shadow-lg">
+                        <div
+                            class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined">deck</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Mái hiên che nắng</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Lắp đặt mái hiên tôn, mái vòm poly lấy sáng
+                            cho sân thượng, hiên nhà.</p>
+                    </div>
+
+                    <div
+                        class="group bg-surface p-6 rounded-xl border border-white/5 hover:border-primary/50 transition-all hover:-translate-y-1 shadow-lg">
+                        <div
+                            class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined">roofing</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Mái xếp di động</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Thi công mái bạt kéo, mái xếp lượn sóng tiện
+                            lợi cho quán cafe, nhà hàng.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="px-4 py-20 md:px-20 lg:px-40">
-            <div class="mx-auto max-w-[1200px]" data-aos="zoom-in">
-                <div class="relative overflow-hidden rounded-2xl bg-primary px-8 py-12 md:px-16 text-center">
+        <section class="px-6 md:px-10 lg:px-20 py-20">
+            <div class="mx-auto max-w-7xl" data-aos="zoom-in">
+                <div
+                    class="relative overflow-hidden rounded-2xl bg-primary px-8 py-16 md:px-16 text-center shadow-2xl shadow-primary/20">
                     <h2 class="relative text-3xl font-black text-white md:text-4xl">Bạn có dự án cần triển khai?</h2>
-                    <p class="relative mx-auto mt-4 max-w-xl text-lg text-white/80">Liên hệ ngay để nhận khảo sát miễn
-                        phí.</p>
+                    <p class="relative mx-auto mt-4 max-w-xl text-lg text-white/90">Liên hệ ngay để nhận tư vấn và khảo
+                        sát miễn phí tận nơi.</p>
                     <div class="relative mt-10 flex flex-wrap justify-center gap-4">
-                        <button
-                            class="rounded-lg bg-white px-8 py-4 text-sm font-bold text-primary transition-all hover:bg-neutral-100 hover:scale-105 active:scale-95">Gửi
-                            yêu cầu báo giá</button>
+                        <button onclick="window.location.href='Contact.html'"
+                            class="rounded-lg bg-white px-8 py-4 text-sm font-bold text-primary transition-all hover:bg-neutral-100 hover:scale-105 active:scale-95 shadow-lg">
+                            Gửi yêu cầu báo giá
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="border-t border-white/10 bg-background-dark px-4 py-12 md:px-20 lg:px-40 text-neutral-500">
-        <div class="mx-auto max-w-[1200px] text-center">
-            <p>© 2026 Technical Services Construction. All rights reserved.</p>
+    <footer class="bg-surface border-t border-white/5 pt-20 pb-10 px-6 lg:px-10" id="contact">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+            <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-white text-xl">architecture</span>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold tracking-tight text-white uppercase leading-none">Nhôm & Cơ Khí
+                        </h2>
+                        <span class="text-[10px] text-slate-500 uppercase tracking-widest">Est. 2016</span>
+                    </div>
+                </div>
+                <p class="text-slate-400 leading-relaxed text-sm">Đối tác tin cậy trong lĩnh vực xây dựng dân dụng và
+                    gia công cơ khí chính xác. Chất lượng tạo nên thương hiệu.</p>
+                <div class="flex gap-4 mt-2">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all"><i
+                            class="material-symbols-outlined text-lg">public</i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all"><i
+                            class="material-symbols-outlined text-lg">mail</i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-lg">Liên kết nhanh</h4>
+                <ul class="flex flex-col gap-3 text-slate-400 text-sm">
+                    <li><a href="CEO.html" class="hover:text-primary transition-colors flex items-center gap-2"><span
+                                class="w-1 h-1 bg-primary rounded-full"></span> Về chúng tôi</a></li>
+                    <li><a href="Services.html"
+                            class="hover:text-primary transition-colors flex items-center gap-2"><span
+                                class="w-1 h-1 bg-primary rounded-full"></span> Dịch vụ</a></li>
+                    <li><a href="Construction.html"
+                            class="hover:text-primary transition-colors flex items-center gap-2"><span
+                                class="w-1 h-1 bg-primary rounded-full"></span> Dự án tiêu biểu</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors flex items-center gap-2"><span
+                                class="w-1 h-1 bg-primary rounded-full"></span> Chính sách bảo hành</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-lg">Dịch vụ</h4>
+                <ul class="flex flex-col gap-3 text-slate-400 text-sm">
+                    <li><a href="Services.html" class="hover:text-primary transition-colors">Chống thấm chuyên sâu</a>
+                    </li>
+                    <li><a href="Services.html" class="hover:text-primary transition-colors">Gia công Inox 304</a></li>
+                    <li><a href="Services.html" class="hover:text-primary transition-colors">Kết cấu thép nhà xưởng</a>
+                    </li>
+                    <li><a href="Services.html" class="hover:text-primary transition-colors">Cửa cổng nghệ thuật</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-lg">Thông tin liên hệ</h4>
+                <div class="flex flex-col gap-4 text-slate-400 text-sm">
+                    <div class="flex gap-3 items-start">
+                        <span class="material-symbols-outlined text-primary mt-0.5">location_on</span>
+                        <span>336 Nguyễn Hiến Lê, Hoà Xuân, Cẩm Lệ <br>TP. Đà Nẵng</span>
+                    </div>
+                    <div class="flex gap-3 items-center">
+                        <span class="material-symbols-outlined text-primary">call</span>
+                        <span class="font-bold text-white text-lg">0911 300 304</span>
+                    </div>
+                    <div class="flex gap-3 items-center">
+                        <span class="material-symbols-outlined text-primary">schedule</span>
+                        <span>Th2 - Th7: 8:00 - 17:30</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-slate-500 text-sm">© 2026 XD & Cơ Khí. All rights reserved.</p>
+            <div class="flex gap-6 text-sm text-slate-500">
+                <a href="#" class="hover:text-white transition-colors">Điều khoản</a>
+                <a href="#" class="hover:text-white transition-colors">Bảo mật</a>
+            </div>
         </div>
     </footer>
 
     <div id="serviceModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
-
         <div
-            class="relative bg-[#1e1e1e] border border-white/10 rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden flex flex-col md:flex-row modal-animate max-h-[90vh]">
-
+            class="relative bg-surface border border-white/10 rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden flex flex-col md:flex-row modal-animate max-h-[90vh]">
             <div class="w-full md:w-1/2 h-64 md:h-auto relative">
                 <img id="modalImg" src="" alt="Service Detail" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-[#1e1e1e] to-transparent md:bg-gradient-to-r"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent md:bg-gradient-to-r"></div>
             </div>
-
             <div class="w-full md:w-1/2 p-8 md:p-10 overflow-y-auto">
                 <span
                     class="inline-block px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded text-xs font-bold uppercase tracking-widest mb-4">Chi
@@ -288,12 +470,10 @@
                 <h3 id="modalTitle" class="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight"></h3>
                 <div class="w-20 h-1 bg-primary mb-6"></div>
                 <p id="modalDesc" class="text-slate-300 text-lg leading-relaxed mb-8"></p>
-
                 <div class="flex flex-col sm:flex-row gap-4">
                     <button onclick="window.location.href='Contact.html'"
                         class="bg-primary hover:bg-white hover:text-primary text-white px-8 py-3 rounded-lg font-bold transition-all flex items-center justify-center gap-2">
-                        Liên hệ tư vấn
-                        <span class="material-symbols-outlined">call</span>
+                        Liên hệ tư vấn <span class="material-symbols-outlined">call</span>
                     </button>
                     <button onclick="closeModal()"
                         class="border border-white/20 hover:bg-white/5 text-white px-8 py-3 rounded-lg font-bold transition-all">
@@ -306,7 +486,16 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        AOS.init({ duration: 800, once: true, offset: 50, easing: 'ease-out-cubic' });
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg', 'bg-opacity-95');
+            } else {
+                navbar.classList.remove('shadow-lg', 'bg-opacity-95');
+            }
+        });
 
         // Function to open the modal
         function openModal(title, desc, imgSrc) {
@@ -321,7 +510,6 @@
 
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            // Prevent scrolling on body when modal is open
             document.body.style.overflow = 'hidden';
         }
 
@@ -330,7 +518,6 @@
             const modal = document.getElementById('serviceModal');
             modal.classList.add('hidden');
             modal.classList.remove('flex');
-            // Restore scrolling
             document.body.style.overflow = 'auto';
         }
 

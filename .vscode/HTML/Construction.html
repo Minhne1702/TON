@@ -1,66 +1,124 @@
 <!DOCTYPE html>
-<html class="dark" lang="vi">
+<html class="dark scroll-smooth" lang="vi">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Thư Viện Dự Án | Construction & Mechanical</title>
+    <title>Nhôm & Cơ Khí | Construction & Mechanical</title>
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap"
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet" />
+
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    colors: { "primary": "#6d6f74", "background-light": "#f7f7f7", "background-dark": "#191919", "surface": "#1e1e1e" },
-                    fontFamily: { "display": ["Space Grotesk"] },
-                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
-                    animation: { 'fade-in': 'fadeIn 0.5s ease-out forwards' },
+                    colors: {
+                        "primary": "#6d6f74",       // Xám kim loại chủ đạo
+                        "primary-hover": "#8b8d93",
+                        "background-light": "#f7f7f7",
+                        "background-dark": "#121212", // Đen sâu đồng bộ
+                        "surface": "#1e1e1e"          // Màu nền các thẻ card
+                    },
+                    // Cấu hình Font mặc định là Space Grotesk cho toàn web
+                    fontFamily: {
+                        "sans": ["Space Grotesk", "ui-sans-serif", "system-ui", "-apple-system", "sans-serif"]
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'shine': 'shine 3s infinite linear',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
                     keyframes: {
-                        fadeIn: { '0%': { opacity: '0', transform: 'translateY(10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }
+                        fadeIn: { '0%': { opacity: '0', transform: 'translateY(10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        shine: { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(100%)' } },
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } }
                     }
                 },
             },
         }
     </script>
     <style>
+        /* CSS Dùng chung bắt buộc */
         body {
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* ===== NAV ===== */
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #6d6f74;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b8d93;
+        }
+
+        /* Glass Navbar Effect */
         .glass-nav {
-            background: rgba(25, 25, 25, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(109, 111, 116, 0.2);
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .nav-link {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: white;
-            transition: all 0.3s;
+        /* Button Shine Effect */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
         }
 
-        .nav-link:hover,
-        .nav-link.active {
-            color: #6d6f74;
-            font-weight: 700;
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: skewX(-25deg);
+            animation: shine-pass 3s infinite;
         }
 
-        /* ===== GALLERY ITEM ===== */
+        @keyframes shine-pass {
+            0% {
+                left: -100%;
+            }
+
+            20% {
+                left: 200%;
+            }
+
+            100% {
+                left: 200%;
+            }
+        }
+
+        /* CSS riêng cho Gallery/Modal (Nếu trang nào không dùng thì để cũng không sao) */
         .project-item {
             opacity: 1;
             transform: scale(1);
             transition: opacity 0.4s ease, transform 0.4s ease;
-            position: relative;
         }
 
-        /* Ẩn item khi filter */
         .project-item.hide {
             opacity: 0;
             transform: scale(0.95);
@@ -68,32 +126,6 @@
             position: absolute;
         }
 
-        /* Hiệu ứng zoom ảnh */
-        .project-item img {
-            transition: transform 0.5s ease;
-        }
-
-        .project-item:hover img {
-            transform: scale(1.05);
-        }
-
-        /* ===== FILTER BUTTON ===== */
-        .filter-btn {
-            transition: all 0.3s;
-            color: #64748b;
-            border-bottom: 2px solid transparent;
-        }
-
-        .filter-btn:hover {
-            color: white;
-        }
-
-        .filter-btn.active {
-            color: white;
-            border-color: #6d6f74;
-        }
-
-        /* ===== LIGHTBOX ===== */
         #lightbox {
             transition: opacity 0.3s ease;
         }
@@ -108,23 +140,25 @@
             pointer-events: none;
         }
     </style>
-
 </head>
 
 <body
-    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white font-sans">
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white font-sans antialiased overflow-x-hidden">
 
-    <nav class="fixed top-0 w-full z-50 glass-nav" data-aos="fade-down" data-aos-duration="1000">
+    <nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
             <a href="Index.html" class="flex items-center gap-3 group">
                 <img src="/Images/Logo.png" alt="Logo"
                     class="w-20 h-20 object-contain rounded-lg group-hover:scale-105 transition-transform">
                 <div>
-                    <h1 class="text-xl font-bold tracking-tight text-white uppercase leading-none">Nhôm & Cơ Khí</h1>
-                    <p class="text-[10px] text-primary font-medium tracking-widest uppercase mt-1">Industrial Solutions
-                    </p>
+                    <h1
+                        class="text-xl font-bold tracking-tight text-white uppercase leading-none group-hover:text-primary transition-colors">
+                        Nhôm & Cơ Khí</h1>
+                    <p class="text-[10px] text-primary font-medium tracking-widest uppercase mt-0.5">Industrial
+                        Solutions</p>
                 </div>
             </a>
+
             <div class="hidden md:flex items-center gap-8 lg:gap-10">
                 <a href="Index.html"
                     class="nav-link text-slate-300 hover:text-white font-medium text-sm uppercase tracking-wide transition-colors">Trang
@@ -133,7 +167,7 @@
                     class="nav-link text-slate-300 hover:text-white font-medium text-sm uppercase tracking-wide transition-colors">Dịch
                     vụ</a>
                 <a href="Construction.html"
-                    class="nav-link text-white hover:text-primary font-medium text-sm uppercase tracking-wide transition-colors">Thư
+                    class="nav-link text-white hover:text-primary font-bold text-sm uppercase tracking-wide transition-colors border-b-2 border-primary pb-1">Thư
                     viện</a>
                 <a href="CEO.html"
                     class="nav-link text-slate-300 hover:text-white font-medium text-sm uppercase tracking-wide transition-colors">CEO</a>
@@ -141,10 +175,13 @@
                     class="nav-link text-slate-300 hover:text-white font-medium text-sm uppercase tracking-wide transition-colors">Liên
                     hệ</a>
             </div>
+
             <div class="flex items-center gap-4">
-                <button onclick="window.location.href='Contact.html'"
-                    class="bg-primary hover:bg-white hover:text-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
-                    Báo giá ngay
+                <button onclick="window.location.href='Contact.html'" class="btn-shine bg-primary hover:bg-white hover:text-primary
+           text-white px-6 py-2.5 rounded-lg text-sm font-bold
+           transition-all flex items-center gap-2
+           shadow-lg shadow-primary/20 transform hover:-translate-y-0.5">
+                    Liên hệ ngay
                 </button>
             </div>
         </div>
@@ -176,7 +213,6 @@
 
     <section class="pb-24 px-6 lg:px-10">
         <div class="max-w-7xl mx-auto">
-
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12 border-b border-white/10 pb-4 sticky top-20 z-40 bg-background-dark/95 backdrop-blur-sm pt-4"
                 data-aos="fade-up">
                 <div class="flex gap-8 overflow-x-auto w-full md:w-auto no-scrollbar" id="filter-container">
@@ -311,7 +347,6 @@
                             class="w-full h-full object-cover">
                     </div>
                 </div>
-
 
                 <div class="project-item group relative rounded-xl overflow-hidden cursor-zoom-in bg-[#202022]"
                     data-category="ton" onclick="openLightbox(this)">
@@ -482,35 +517,119 @@
             onclick="event.stopPropagation()">
     </div>
 
-    <footer class="bg-background-dark border-t border-white/5 pt-20 pb-10 px-6 lg:px-10">
-        <div class="max-w-7xl mx-auto text-center text-slate-500 text-sm">
-            © 2026 XD & Cơ Khí. All rights reserved.
+    <footer class="bg-surface border-t border-white/5 pt-20 pb-10 px-6 lg:px-10" id="contact">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+            <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-white text-xl">architecture</span>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold tracking-tight text-white uppercase leading-none">Nhôm & Cơ Khí
+                        </h2>
+                        <span class="text-[10px] text-slate-500 uppercase tracking-widest">Est. 2016</span>
+                    </div>
+                </div>
+                <p class="text-slate-400 leading-relaxed text-sm">Đối tác tin cậy trong lĩnh vực xây dựng dân dụng và
+                    gia công cơ khí chính xác. Chất lượng tạo nên thương hiệu.</p>
+                <div class="flex gap-4 mt-2">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all"><i
+                            class="material-symbols-outlined text-lg">public</i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all"><i
+                            class="material-symbols-outlined text-lg">mail</i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-lg">Liên kết nhanh</h4>
+                <ul class="flex flex-col gap-3 text-slate-400 text-sm">
+                    <li><a href="CEO.html" class="hover:text-primary transition-colors flex items-center gap-2"><span
+                                class="w-1 h-1 bg-primary rounded-full"></span> Về chúng tôi</a></li>
+                    <li><a href="Services.html"
+                            class="hover:text-primary transition-colors flex items-center gap-2"><span
+                                class="w-1 h-1 bg-primary rounded-full"></span> Dịch vụ</a></li>
+                    <li><a href="Construction.html"
+                            class="hover:text-primary transition-colors flex items-center gap-2"><span
+                                class="w-1 h-1 bg-primary rounded-full"></span> Dự án tiêu biểu</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors flex items-center gap-2"><span
+                                class="w-1 h-1 bg-primary rounded-full"></span> Chính sách bảo hành</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-lg">Dịch vụ</h4>
+                <ul class="flex flex-col gap-3 text-slate-400 text-sm">
+                    <li><a href="Services.html" class="hover:text-primary transition-colors">Chống thấm chuyên sâu</a>
+                    </li>
+                    <li><a href="Services.html" class="hover:text-primary transition-colors">Gia công Inox 304</a></li>
+                    <li><a href="Services.html" class="hover:text-primary transition-colors">Kết cấu thép nhà xưởng</a>
+                    </li>
+                    <li><a href="Services.html" class="hover:text-primary transition-colors">Cửa cổng nghệ thuật</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-lg">Thông tin liên hệ</h4>
+                <div class="flex flex-col gap-4 text-slate-400 text-sm">
+                    <div class="flex gap-3 items-start">
+                        <span class="material-symbols-outlined text-primary mt-0.5">location_on</span>
+                        <span>336 Nguyễn Hiến Lê, Hoà Xuân, Cẩm Lệ <br>TP. Đà Nẵng</span>
+                    </div>
+                    <div class="flex gap-3 items-center">
+                        <span class="material-symbols-outlined text-primary">call</span>
+                        <span class="font-bold text-white text-lg">0911 300 304</span>
+                    </div>
+                    <div class="flex gap-3 items-center">
+                        <span class="material-symbols-outlined text-primary">schedule</span>
+                        <span>Th2 - Th7: 8:00 - 17:30</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-slate-500 text-sm">© 2026 XD & Cơ Khí. All rights reserved.</p>
+            <div class="flex gap-6 text-sm text-slate-500">
+                <a href="#" class="hover:text-white transition-colors">Điều khoản</a>
+                <a href="#" class="hover:text-white transition-colors">Bảo mật</a>
+            </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        // Init AOS
+        AOS.init({ duration: 800, once: true, offset: 50, easing: 'ease-out-cubic' });
 
-        // Tự động gọi hàm filterSelection('all') khi trang web tải xong
-        window.onload = function () {
-            // Giả lập việc bấm vào nút "Tất cả"
-            const btnAll = document.getElementById('btn-all');
-            filterSelection('all', btnAll);
-        };
+        // Navbar Scroll Effect (From Master)
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg', 'bg-opacity-95');
+            } else {
+                navbar.classList.remove('shadow-lg', 'bg-opacity-95');
+            }
+        });
 
-        /* --- LOGIC LỌC ẢNH --- */
+        // Filter Logic (Tự động chạy khi load trang)
+        document.addEventListener('DOMContentLoaded', () => {
+            filterSelection('all', document.getElementById('btn-all'));
+        });
+
         function filterSelection(category, btnElement) {
             const items = document.getElementsByClassName("project-item");
 
-            // Active button
-            const btns = document.getElementsByClassName("filter-btn");
-            for (let b of btns) b.classList.remove("active");
-            if (btnElement) btnElement.classList.add("active");
+            // Active button style
+            if (btnElement) {
+                const btns = document.getElementsByClassName("filter-btn");
+                for (let b of btns) b.classList.remove("active");
+                btnElement.classList.add("active");
+            }
 
+            // Hide/Show items
             for (let item of items) {
                 const itemCategory = item.getAttribute("data-category");
-
                 if (category === "all" || itemCategory === category) {
                     item.classList.remove("hide");
                 } else {
@@ -519,34 +638,22 @@
             }
         }
 
-        // Load mặc định
-        window.onload = () => {
-            filterSelection("all", document.getElementById("btn-all"));
-        };
-
         /* --- LOGIC LIGHTBOX (POPUP ẢNH) --- */
         function openLightbox(element) {
-            // Lấy đường dẫn ảnh từ thẻ img con
             const img = element.querySelector('img');
             const src = img.src;
-
-            // Gán vào lightbox
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
 
             lightboxImg.src = src;
             lightbox.classList.add('open');
-
-            // Khóa cuộn trang
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden'; // Khóa cuộn
         }
 
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
             lightbox.classList.remove('open');
-
-            // Mở khóa cuộn trang
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = 'auto'; // Mở cuộn
         }
 
         // Đóng bằng phím ESC
