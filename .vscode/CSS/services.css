@@ -1,24 +1,26 @@
 /* CSS Dùng chung bắt buộc */
+
+/* --- CẤU HÌNH ẨN THANH SCROLLBAR (Vẫn cuộn được) --- */
+html {
+    /* Ẩn scrollbar trên Firefox */
+    scrollbar-width: none;
+    /* Ẩn scrollbar trên IE/Edge cũ */
+    -ms-overflow-style: none;
+}
+
 body {
     font-family: 'Space Grotesk', sans-serif;
+    /* Ẩn scrollbar trên Firefox (dự phòng) */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
+/* Ẩn scrollbar trên Chrome, Safari, Edge, Opera */
 ::-webkit-scrollbar {
-    width: 8px;
+    display: none;
 }
 
-::-webkit-scrollbar-track {
-    background: #121212;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #6d6f74;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #8b8d93;
-}
+/* ------------------------------------------------ */
 
 /* Glass Navbar Effect */
 .glass-nav {

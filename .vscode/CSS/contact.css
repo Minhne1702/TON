@@ -1,29 +1,26 @@
-/* BẮT BUỘC: Khóa chiều ngang để tránh vỡ giao diện trên mobile */
-html,
+/* --- CẤU HÌNH ẨN THANH SCROLL (NHƯNG VẪN CUỘN ĐƯỢC) --- */
+
+/* 1. Cho Chrome, Safari, Opera, Edge */
+html {
+    /* Ẩn scrollbar trên Firefox */
+    scrollbar-width: none;
+    /* Ẩn scrollbar trên IE/Edge cũ */
+    -ms-overflow-style: none;
+}
+
 body {
-    overflow-x: hidden;
-    width: 100%;
-    position: relative;
     font-family: 'Space Grotesk', sans-serif;
+    /* Ẩn scrollbar trên Firefox (dự phòng) */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-/* Custom Scrollbar */
+/* Ẩn scrollbar trên Chrome, Safari, Edge, Opera */
 ::-webkit-scrollbar {
-    width: 8px;
+    display: none;
 }
 
-::-webkit-scrollbar-track {
-    background: #121212;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #6d6f74;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #8b8d93;
-}
+/* ----------------------------------------- */
 
 /* Glass Navbar Effect */
 .glass-nav {

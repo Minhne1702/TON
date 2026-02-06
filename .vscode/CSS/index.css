@@ -1,24 +1,26 @@
+/* --- CẤU HÌNH ẨN THANH SCROLLBAR --- */
+html {
+    /* Ẩn scrollbar trên Firefox */
+    scrollbar-width: none;
+    /* Ẩn scrollbar trên IE/Edge cũ */
+    -ms-overflow-style: none;
+}
+
 body {
     font-family: 'Space Grotesk', sans-serif;
+    /* Ẩn scrollbar trên Firefox (dự phòng) */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
+/* Ẩn scrollbar trên Chrome, Safari, Edge, Opera */
 ::-webkit-scrollbar {
-    width: 8px;
+    display: none;
 }
 
-::-webkit-scrollbar-track {
-    background: #121212;
-}
+/* ------------------------------------- */
 
-::-webkit-scrollbar-thumb {
-    background: #6d6f74;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #8b8d93;
-}
-
+/* Glass Navbar Effect */
 .glass-nav {
     background: rgba(18, 18, 18, 0.95);
     backdrop-filter: blur(16px);
@@ -26,6 +28,7 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* Button Shine Effect */
 .btn-shine {
     position: relative;
     overflow: hidden;
@@ -43,6 +46,20 @@ body {
     animation: shine-pass 3s infinite;
 }
 
+@keyframes shine-pass {
+    0% {
+        left: -100%;
+    }
+
+    20% {
+        left: 200%;
+    }
+
+    100% {
+        left: 200%;
+    }
+}
+
 .ease-out-quart {
     transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -58,20 +75,6 @@ body {
 .menu-open .mobile-link {
     opacity: 1;
     transform: translateY(0);
-}
-
-@keyframes shine-pass {
-    0% {
-        left: -100%;
-    }
-
-    20% {
-        left: 200%;
-    }
-
-    100% {
-        left: 200%;
-    }
 }
 
 /* Mobile Menu Transition */

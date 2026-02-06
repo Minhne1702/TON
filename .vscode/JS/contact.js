@@ -1,4 +1,4 @@
-// Init AOS
+// Init AOS Animation
 AOS.init({ duration: 800, once: true, offset: 50, easing: 'ease-out-cubic' });
 
 // Navbar Scroll Effect
@@ -11,7 +11,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-/* --- MOBILE MENU LOGIC --- */
+/* --- MOBILE MENU LOGIC (ĐÃ FIX LỖI SCROLL) --- */
 const mobileBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 const menuIcon = document.getElementById('menu-icon');
@@ -24,33 +24,36 @@ function toggleMenu() {
     const body = document.body;
 
     if (isMenuOpen) {
-        // Open menu
+        // Mở menu
         mobileMenu.classList.remove('translate-x-full');
         menuIcon.textContent = 'close';
-        menuIcon.classList.add('rotate-90'); // Xoay icon đóng
-        body.style.overflow = 'hidden';
+        menuIcon.classList.add('rotate-90');
+        body.style.overflow = 'hidden'; // Khóa scroll khi menu mở
 
-        // Chạy hiệu ứng xuất hiện từng dòng (Stagger Animation)
+        // Hiệu ứng xuất hiện từng dòng (Stagger Animation)
         mobileLinks.forEach((link, index) => {
             setTimeout(() => {
                 link.classList.add('opacity-100', 'translate-y-0');
                 link.classList.remove('opacity-0', 'translate-y-4');
-            }, 100 + (index * 100)); // Mỗi dòng trễ nhau 100ms
+            }, 100 + (index * 100));
         });
 
-        // Hiển thị nút CTA cuối cùng
+        // Hiệu ứng nút CTA
         setTimeout(() => {
             ctaBtn.classList.remove('opacity-0', 'translate-y-4');
         }, 600);
 
     } else {
-        // Close menu
+        // Đóng menu
         mobileMenu.classList.add('translate-x-full');
         menuIcon.textContent = 'menu';
         menuIcon.classList.remove('rotate-90');
-        body.style.overflow = 'auto';
 
-        // Reset lại trạng thái ẩn cho animation lần sau
+        // --- FIX BUG SCROLL ---
+        body.style.overflow = ''; // Xóa style inline để trở về mặc định (CSS)
+        // ----------------------
+
+        // Reset trạng thái animation
         mobileLinks.forEach(link => {
             link.classList.remove('opacity-100', 'translate-y-0');
             link.classList.add('opacity-0', 'translate-y-4');
@@ -61,7 +64,7 @@ function toggleMenu() {
 
 mobileBtn.addEventListener('click', toggleMenu);
 
-// Đóng menu khi click vào link
+// Đóng menu khi click vào link bên trong
 mobileLinks.forEach(link => {
     link.addEventListener('click', toggleMenu);
 });
